@@ -1,6 +1,12 @@
 # GatorEats-CEN5035-Spring22
 
-This is a web application for meal ordering online
+This is a web application for meal ordering online, similar to Uber eats.
+
+Team Member:
+    Lin Huang
+    Guanglong Zhang
+    Tinghui Zhang
+    Hongru Chu
 
 1. Create MySql instance on Google Cloud Platform
 
