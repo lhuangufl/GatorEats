@@ -2,6 +2,8 @@
 
 This is a web application for meal ordering online, similar to Uber eats.
 
+This project will use Golang for banckend and React.js for frontend.
+
 Team Member:
 
     Lin Huang,
@@ -13,19 +15,20 @@ Team Member:
     Hongru Chu,
 
 
+
 1. Create MySql instance on Google Cloud Platform
 
-Public IP: 35.224.175.177
+    Public IP: 35.224.175.177
 
-Connection Name: onyx-rainfall-337905:us-central1:cen5035-spring2022
+    Connection Name: onyx-rainfall-337905:us-central1:cen5035-spring2022
 
-Default Port: 3306
+    Default Port: 3306
 
-Username: gatoreats
+    Username: gatoreats
 
-Password: 123456
+    Password: 123456
 
-Instance IP Assignment: 0.0.0.0
+    Instance IP Assignment: 0.0.0.0
 
 
 2. Establish connection via MySQL WorkBench
