@@ -32,5 +32,9 @@ Team Member:
 
 
 2. Establish connection via MySQL WorkBench
+![alt text](https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/MySQL%20Connection.png)
+
+3. User Login and Register
+
 
 
