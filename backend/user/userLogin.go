@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	dba "github.com/lhuangufl/GatorEats-CEN5035-Spring22/dbConnection"
+	dba "goapp/dbConnection"
 )
 
 // Call userLogin to get user profile or error message
@@ -33,7 +33,7 @@ func UserLogin(userID string, inputPassword string) (UserProfile, error) {
 		fmt.Println("It looks like we have the user profile data")
 		fmt.Println(data.Columns())
 		for data.Next() {
-			if err := data.Scan(&userInfo.customerName, &userInfo.phone, &userInfo.city, &userInfo.state, &userInfo.country, &userInfo.postalCode); err != nil {
+			if err := data.Scan(&userInfo.CustomerName, &userInfo.Phone, &userInfo.City, &userInfo.State, &userInfo.Country, &userInfo.PostalCode); err != nil {
 				fmt.Println(err)
 				return userInfo, nil
 			}
