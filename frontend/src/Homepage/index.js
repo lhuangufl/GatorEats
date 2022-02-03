@@ -119,10 +119,10 @@ export default function Homepage() {
             alt="resturtant"
           ></img>
           <span
-            onMouseEnter={() => setMouse("deliver")}
+            onMouseEnter={() => setMouse("resturtant")}
             onMouseLeave={() => setMouse("")}
             className={
-              mouse === "deliver"
+              mouse === "resturtant"
                 ? "home-bottom-sections-link-onmouse"
                 : "home-bottom-sections-link"
             }
