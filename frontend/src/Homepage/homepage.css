@@ -160,7 +160,7 @@
   justify-content: center;
   height: 300px;
   width: 300px;
-  background-color: red;
+  /* background-color: red; */
 }
 .home-bottom-sections-image {
   height: 200px;
@@ -181,6 +181,6 @@
 .home-bottom-sections-mid {
   height: 300px;
   width: 100px;
-  background-color: blue;
+  /* background-color: blue; */
   /* color: rgb(38, 159, 230); */
 }
