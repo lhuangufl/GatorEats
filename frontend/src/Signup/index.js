@@ -1,18 +1,61 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
+import axios from "axios";
 import google from "./images/google.png";
 import NavBar from "./../NavBar/index";
 
 export default function Signup() {
-  const thisWidth = window.innerWidth;
-  const thisHeight = window.innerHeight;
   const [typing, setTyping] = useState("");
   const [mouse, setMouse] = useState("");
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+  const checkPassword = (e) => {
+    if (e.target.value.length > 8) {
+      if (e.target.value.match(/[a-z]+/) || e.target.value.match(/[A-Z]+/)) {
+        if (e.target.value.match(/[0-9]+/)) {
+          setPassword(e.target.value);
+          setPasswordError("");
+        } else {
+          setPasswordError("password has to contains digits");
+        }
+      } else {
+        setPasswordError("password has to contains letters");
+      }
+    } else {
+      setPasswordError("password has to be at least 8 characters");
+    }
+  };
+  const checkConfirmPassword = (e) => {
+    if (e.target.value === password) {
+      setConfirmPasswordError("");
+    } else {
+      setConfirmPasswordError("password donesn't match");
+    }
+  };
+  const handleSubmit = (e) => {
+    axios
+      .post("http://127.0.0.1:5000/react/signup", {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: password,
+      }) /*.then(res => {
+        const token = res.data;
+        this.props.setToken(token);
+        this.setState({loggedIn: true});
+    })*/
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const navigate = useNavigate();
   return (
@@ -95,23 +138,27 @@ export default function Signup() {
           <span className="signup-content-title">Password</span>
           <div
             className={
-              typing === "password"
+              passwordError !== ""
+                ? "signup-input-block-onerror"
+                : typing === "password"
                 ? "signup-input-block-ontyping"
                 : "signup-input-block"
             }
             onClick={() => setTyping("password")}
           >
-            <input
-              className="signup-input"
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
+            <input className="signup-input" onChange={checkPassword}></input>
           </div>
+          {passwordError !== "" && (
+            <span className="signup-content-error">{passwordError}</span>
+          )}
         </div>
         <div className="signup-block">
           <span className="signup-content-title">Confirm Password</span>
           <div
             className={
-              typing === "confirmPassword"
+              confirmPasswordError !== ""
+                ? "signup-input-block-onerror"
+                : typing === "confirmPassword"
                 ? "signup-input-block-ontyping"
                 : "signup-input-block"
             }
@@ -119,9 +166,12 @@ export default function Signup() {
           >
             <input
               className="signup-input"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={checkConfirmPassword}
             ></input>
           </div>
+          {confirmPasswordError !== "" && (
+            <span className="signup-content-error">{confirmPasswordError}</span>
+          )}
         </div>
         <div
           className={
@@ -129,6 +179,7 @@ export default function Signup() {
           }
           onMouseEnter={() => setMouse("signup")}
           onMouseLeave={() => setMouse("")}
+          onClick={handleSubmit}
         >
           <span className="signup-google-content">Sign up</span>
         </div>
@@ -145,7 +196,6 @@ export default function Signup() {
           <span className="signup-google-content">Continue with Google</span>
         </div>
       </div>
-      <span>signup page</span>
     </div>
   );
 }
