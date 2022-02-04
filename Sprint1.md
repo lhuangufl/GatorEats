@@ -30,3 +30,6 @@ Server is live on :8081
 | /api/login    | POST   | { email String, password String }              | login user        |
 | /api/register | POST   | { email String, password String, name String } | register new user |
 | /api/home     | POST   | { }                                            | Homepage display List of Restaurant |
+
+## Sprint1 Backend Demo
+[Backend Demo#1 Click Me](https://www.youtube.com/watch?v=h68qS_seHmw "Backend Demo 1")
