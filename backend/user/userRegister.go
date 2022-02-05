@@ -1,20 +1,37 @@
 package user
 
 import (
-	dba "github.com/lhuangufl/GatorEats-CEN5035-Spring22/dbConnection"
+	"encoding/json"
+	"net/http"
+
+	"github.com/go-sql-driver/mysql"
+	"goapp/dbConnection"
 )
 
-func UserRegister(profile UserProfile, pass string) error {
-	db, err := dba.OpenConnection()
-	if err != nil {
-		return err
+func UserRegisterHandler(writer http.ResponseWriter, request *http.Request) {
+	var profile UserProfile
+
+	decoder := json.NewDecoder(request.Body)
+	if err := decoder.Decode(&profile); err != nil {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
 	}
 
-	_, err = db.Exec("INSERT INTO `customers` "+
-		"(passcode, customerName, phone, city, state, country, postalCode) values "+
-		"(?,        ?,            ?,     ?,    ?,     ?,       ?)",
-		pass, profile.customerName, profile.phone, profile.city, profile.state, profile.country, profile.postalCode,
-	)
+	if profile.UserID == "" || profile.Passcode == "" {
+		writer.WriteHeader(http.StatusBadRequest)
+		return
+	}
 
-	return err
+	if err := UserRegister(&profile); err != nil {
+		mysqlErr, ok := err.(*mysql.MySQLError)
+		if ok && mysqlErr.Number == 1062 {
+			writer.WriteHeader(http.StatusConflict)
+		} else {
+			writer.WriteHeader(http.StatusInternalServerError)
+		}
+	}
+}
+
+func UserRegister(profile *UserProfile) error {
+	return dbConnection.DB.Create(&profile).Error
 }
