@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signin.css";
+import axios from "axios";
 import NavBar from "./../NavBar/index";
 import google from "./images/google.png";
 
@@ -10,9 +11,23 @@ export default function Signin() {
   const [typing, setTyping] = useState("");
   const [mouse, setMouse] = useState("");
 
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    axios
+      .post("http://127.0.0.1:5000/react/signin", {
+        email: email,
+        password: password,
+      }) /*.then(res => {
+        const token = res.data;
+        this.props.setToken(token);
+        this.setState({loggedIn: true});
+    })*/
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const navigate = useNavigate();
   return (
@@ -74,16 +89,17 @@ export default function Signin() {
           >
             <input
               className="signup-input"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             ></input>
           </div>
         </div>
         <div
           className={
-            mouse === "signup" ? "signin-submit-onmouse" : "signin-submit"
+            mouse === "signin" ? "signin-submit-onmouse" : "signin-submit"
           }
-          onMouseEnter={() => setMouse("signup")}
+          onMouseEnter={() => setMouse("signin")}
           onMouseLeave={() => setMouse("")}
+          onClick={handleSubmit}
         >
           <span className="signin-google-content">Sign in</span>
         </div>
