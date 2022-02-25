@@ -50,3 +50,8 @@ what I have done:
 Demo link:
 
 [Click here for Tinghui's frontend demo](https://youtu.be/9xo_8fDS7_A)
+
+## Hongru Chu sprint 1
+1. setted up mock backend server.
+2. frontend sifnin page with connected with mock backend.
+[Click here for Hongru's frontend demo](https://www.youtube.com/watch?v=xx68cbNzL3Y&ab_channel=hongru)
