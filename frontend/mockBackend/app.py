@@ -36,6 +36,17 @@ def signup_here():
         print(data)
     return "signup"
 
+@app.route("/react/signup_resturtant", methods=['GET', 'POST'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+def signup_resturtant():
+    # return {
+    #     "home": "true"
+    # }
+    if request.method == 'POST' or request.method == 'GET':
+        data = json.loads(str(request.data, 'utf-8'))
+        print(data)
+    return "signup"
+
 @app.route("/react/signin", methods=['GET', 'POST'])
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def signin_here():
@@ -46,5 +57,6 @@ def signin_here():
         data = json.loads(str(request.data, 'utf-8'))
         print(data)
     return "signup"
+
 
 # app = Flask(__name__)

@@ -6,6 +6,7 @@ import App from "./App";
 import Homepage from "./Homepage/index";
 import Signin from "./Signin/index";
 import Signup from "./Signup/index";
+import SignupResturtant from "./SignupResturtant/index";
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Route path="/app" element={<App />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/signup_resturtant" element={<SignupResturtant />}></Route>
         <Route
           path="/about"
           element={
