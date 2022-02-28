@@ -93,6 +93,7 @@ export default function Homepage() {
           <span
             onMouseEnter={() => setMouse("resturtant")}
             onMouseLeave={() => setMouse("")}
+            onClick={() => navigate("/signup_resturtant")}
             className={
               mouse === "resturtant"
                 ? "home-bottom-sections-link-onmouse"
