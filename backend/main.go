@@ -1,38 +1,49 @@
 package main
 
 import (
-	"fmt"
-	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
+	"log"
+	"net/http"
+
+	"goapp/dbConnection"
+	"goapp/user"
 )
 
 func main() {
-	var (
-        dbUser                 = "gatoreats"                 // e.g. 'my-db-user'
-        dbPwd                  = "123456"                 // e.g. 'my-db-password'
-        dbName                 = "classicmodels"                  // e.g. 'my-database'
-	)
 
-
-	dbURI := fmt.Sprintf("%s:%s@tcp(35.224.175.177:3306)/%s", dbUser, dbPwd, dbName)
-	fmt.Println(dbURI)
-	// dbPool is the pool of database connections.
-	db, err := sql.Open("mysql", dbURI)
-	if err != nil {
+	// Below are two testing cases
+	////////////////////////////////////////////////////////////////
+	// Testing openConnection API; Running Okay.
+	/*
+		db, err := dba.OpenConnection()
+		if err != nil {
+			fmt.Println("Connection Error!")
 			fmt.Println(err)
-	}
-	defer db.Close()
-	err = db.Ping()
-	if err != nil {
-		fmt.Println("error verifying connection with db.Ping")
-		panic(err.Error())
-	}
+		}
 
-	// func (db *DB) Query(query string, args ...interface{}) (*Rows, error)
-	data, err := db.Query("SELECT * FROM classicmodels.customers;")
-	if err != nil {
-		panic(err.Error())
+		// func (db *DB) Query(query string, args ...interface{}) (*Rows, error)
+		data, err := db.Query("SELECT * FROM classicmodels.customers;")
+		fmt.Println(data.Columns())
+		if err != nil {
+			fmt.Println("Returned a error message")
+		}
+		fmt.Println("Successful Connection to Database!")
+		db.Close()
+	*/
+	//Testing userLogin API; Running Okay
+	// User 103 is a test user
+
+	// userTuple, err := user.UserLogin("112", "71800")
+	// if err != nil {
+	// 	fmt.Println("error when scanning user profile")
+	// }
+	// fmt.Println(userTuple)
+
+	if err := dbConnection.InitDB(); err != nil {
+		panic(err)
 	}
-	fmt.Println(data.Columns())
-	fmt.Println("Successful Connection to Database!")
+	http.HandleFunc("/register", user.UserRegisterHandler)
+	log.Println("listen http on port :8080")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		panic(err)
+	}
 }
