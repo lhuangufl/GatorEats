@@ -46,3 +46,5 @@ Server is live on :8081
 | /api/login    | POST   | { email String, password String }              | login user        |
 | /api/register | POST   | { email String, password String, name String } | register new user |
 | /api/home     | POST   | { }                                            | Homepage display List of Restaurant |
+| /api/restaurant | GET | { } | Get Nearby restaurant |
+| /api/restaurant | POST| { rname String, location String, rating Number, rtype String, phone String, zipCode Number } | Create restaurant |

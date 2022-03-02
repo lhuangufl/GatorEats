@@ -3,8 +3,9 @@ package user
 import (
 	"testing"
 
-	"github.com/go-sql-driver/mysql"
 	dba "goapp/dbConnection"
+
+	"github.com/go-sql-driver/mysql"
 )
 
 func TestUserRegister(t *testing.T) {
@@ -61,7 +62,7 @@ func TestUserRegister(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := UserRegister(tt.args.profile, tt.args.pass); (err != nil) != tt.wantErr {
+			if err := UserRegister(&tt.args.profile); (err != nil) != tt.wantErr {
 				t.Errorf("UserRegister() error = %v, wantErr %v", err, tt.wantErr)
 			}
 
