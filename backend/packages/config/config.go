@@ -23,14 +23,14 @@ const (
 type ConfigType map[string]string
 
 var Config = ConfigType{
-	POSTGRES_USER:        "",
-	POSTGRES_PASSWORD:    "",
-	POSTGRES_DB:          "",
+	POSTGRES_USER:        "fqhmuqxpozwlin",
+	POSTGRES_PASSWORD:    "fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315",
+	POSTGRES_DB:          "db63l3ukuv77j8",
 	CLIENT_URL:           "",
-	SERVER_PORT:          "",
+	SERVER_PORT:          "5432",
 	JWT_KEY:              "",
 	RUN_MIGRATION:        "",
-	POSTGRES_SERVER_HOST: "localhost",
+	POSTGRES_SERVER_HOST: "ec2-52-206-193-199.compute-1.amazonaws.com",
 }
 
 func InitConfig() {
