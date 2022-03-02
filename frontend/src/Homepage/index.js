@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavBar from "./../NavBar/index";
 import homeBackground from "./images/homeBackground.svg";
 import location from "./images/location.svg";
 import deliver from "./images/deliver.png";
@@ -28,36 +29,7 @@ export default function Homepage() {
           backgroundImage: `url(${homeBackground})`,
         }}
       >
-        <div className="home-navbar">
-          <div className="home-navbar-title">
-            <span>GatorEats</span>
-          </div>
-          <div style={{ width: thisWidth * 0.6 }}></div>
-          <div
-            className={
-              mouse === "signup"
-                ? "home-navbar-signup-onmouse"
-                : "home-navbar-signup"
-            }
-            onMouseEnter={() => setMouse("signup")}
-            onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signup")}
-          >
-            <span>Sign up</span>
-          </div>
-          <div
-            className={
-              mouse === "signin"
-                ? "home-navbar-signin-onmouse"
-                : "home-navbar-signin"
-            }
-            onMouseEnter={() => setMouse("signin")}
-            onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signin")}
-          >
-            <span>Sign in</span>
-          </div>
-        </div>
+        <NavBar />
         <div className="home-title">
           <span>Search foods near to you</span>
         </div>
@@ -86,6 +58,9 @@ export default function Homepage() {
             }
             onMouseEnter={() => setMouse("submit")}
             onMouseLeave={() => setMouse("")}
+            onClick={() =>
+              address !== "" && navigate(`/resturtant_results/${address}`)
+            }
           >
             <span>find my food</span>
           </div>
@@ -119,10 +94,11 @@ export default function Homepage() {
             alt="resturtant"
           ></img>
           <span
-            onMouseEnter={() => setMouse("deliver")}
+            onMouseEnter={() => setMouse("resturtant")}
             onMouseLeave={() => setMouse("")}
+            onClick={() => navigate("/signup_resturtant")}
             className={
-              mouse === "deliver"
+              mouse === "resturtant"
                 ? "home-bottom-sections-link-onmouse"
                 : "home-bottom-sections-link"
             }

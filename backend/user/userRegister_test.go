@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/go-sql-driver/mysql"
-	dba "github.com/lhuangufl/GatorEats-CEN5035-Spring22/dbConnection"
+	dba "goapp/dbConnection"
 )
 
 func TestUserRegister(t *testing.T) {
@@ -32,12 +32,12 @@ func TestUserRegister(t *testing.T) {
 			"TestRegister",
 			args{
 				UserProfile{
-					customerName: "name",
-					phone:        "phone",
-					city:         "city",
-					state:        "state",
-					country:      "country",
-					postalCode:   100,
+					CustomerName: "name",
+					Phone:        "phone",
+					City:         "city",
+					State:        "state",
+					Country:      "country",
+					PostalCode:   100,
 				},
 				"pass",
 			},
@@ -47,12 +47,12 @@ func TestUserRegister(t *testing.T) {
 			"TestRegisterDuplicateName",
 			args{
 				UserProfile{
-					customerName: "name",
-					phone:        "phone",
-					city:         "city",
-					state:        "state",
-					country:      "country",
-					postalCode:   100,
+					CustomerName: "name",
+					Phone:        "phone",
+					City:         "city",
+					State:        "state",
+					Country:      "country",
+					PostalCode:   100,
 				},
 				"pass",
 			},
