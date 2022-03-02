@@ -58,6 +58,9 @@ export default function Homepage() {
             }
             onMouseEnter={() => setMouse("submit")}
             onMouseLeave={() => setMouse("")}
+            onClick={() =>
+              address !== "" && navigate(`/resturtant_results/${address}`)
+            }
           >
             <span>find my food</span>
           </div>
