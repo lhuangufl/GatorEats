@@ -6,6 +6,7 @@ import (
 	"goapp/packages/db"
 	"goapp/packages/utils"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -122,6 +123,45 @@ func Home(c *fiber.Ctx, dbConn *sql.DB) error {
 		return c.Status(http.StatusUnauthorized).
 			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
 	}
+	for rows.Next() {
+		var restaurant db.Restaurant
+		err = rows.Scan(&restaurant.ID, &restaurant.Rname, &restaurant.Location, &restaurant.Rating,
+			&restaurant.Rtype, &restaurant.Phone)
+		if err != nil {
+			return c.Status(http.StatusUnauthorized).
+				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
+		}
+		restaurants = append(restaurants, restaurant)
+	}
+	return c.Status(http.StatusOK).JSON(restaurants)
+}
+
+func CreateRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
+	r := new(db.Restaurant)
+
+	if err := c.BodyParser(r); err != nil {
+		return err
+	}
+
+	_, err := dbConn.Query(db.CreateRestaurant, r.Rname, r.Location, r.Rating, r.Rtype, r.Phone, r.ZipCode)
+	if err != nil {
+		return err
+	}
+	return c.JSON(&fiber.Map{"success": true})
+}
+
+func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
+	zipCodeStr := c.Query("zipCode", "0")
+	zipCode, _ := strconv.ParseInt(zipCodeStr, 10, 64)
+
+	restaurants := []db.Restaurant{}
+	rows, err := dbConn.Query(db.GetAllRestaurantsQueryByZipCode, zipCode-10, zipCode+10)
+	if err != nil {
+		return c.Status(http.StatusUnauthorized).
+			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
+	}
+	defer rows.Close()
+
 	for rows.Next() {
 		var restaurant db.Restaurant
 		err = rows.Scan(&restaurant.ID, &restaurant.Rname, &restaurant.Location, &restaurant.Rating,
