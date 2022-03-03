@@ -37,6 +37,7 @@ type Restaurant struct {
 	Rating   int16  `json:"rating,omitempty"`
 	Rtype    string `json:"rtype,omitempty"`
 	Phone    string `json:"phone,omitempty"`
+	ZipCode  int64  `json:"zip_code"`
 }
 
 func (user *User) HashPassword() error {
