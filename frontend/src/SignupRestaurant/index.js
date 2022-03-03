@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./signup_resturtant.css";
+import "./signup_restaurant.css";
 import axios from "axios";
 import google from "./images/google.png";
 import NavBar from "../NavBar/index";
 
-export default function SignupResturtant() {
+export default function Signuprestaurant() {
   const [typing, setTyping] = useState("");
   const [mouse, setMouse] = useState("");
 
-  const [resturtant, setResturtant] = useState("");
+  const [restaurant, setrestaurant] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -43,8 +43,8 @@ export default function SignupResturtant() {
   };
   const handleSubmit = (e) => {
     axios
-      .post("http://127.0.0.1:5000/react/signup_resturtant", {
-        resturtantname: resturtant,
+      .post("http://127.0.0.1:5000/react/signup_restaurant", {
+        restaurantname: restaurant,
         firstname: firstname,
         lastname: lastname,
         email: email,
@@ -71,16 +71,16 @@ export default function SignupResturtant() {
         }}
       ></div>
       <div className="signup">
-        <span className="signup-resturtant-title">
-          Sign up as a resturtant owner
+        <span className="signup-restaurant-title">
+          Sign up as a restaurant owner
         </span>
-        <div className="signup-resturtant-content">
+        <div className="signup-restaurant-content">
           <span>already have account?</span>
           <div
             className={
               mouse === "signin"
-                ? "signup-resturtant-signin-onmouse"
-                : "signup-resturtant-signin"
+                ? "signup-restaurant-signin-onmouse"
+                : "signup-restaurant-signin"
             }
             onMouseEnter={() => setMouse("signin")}
             onMouseLeave={() => setMouse("")}
@@ -89,119 +89,119 @@ export default function SignupResturtant() {
             <span>Sign in</span>
           </div>
         </div>
-        <div className="signup-resturtant-block">
-          <span className="signup-resturtant-content-title">
-            Resturtant Name
+        <div className="signup-restaurant-block">
+          <span className="signup-restaurant-content-title">
+            restaurant Name
           </span>
           <div
             className={
-              typing === "resturtant"
-                ? "signup-resturtant-input-block-ontyping"
-                : "signup-resturtant-input-block"
+              typing === "restaurant"
+                ? "signup-restaurant-input-block-ontyping"
+                : "signup-restaurant-input-block"
             }
-            onClick={() => setTyping("resturtant")}
+            onClick={() => setTyping("restaurant")}
           >
             <input
-              className="signup-resturtant-input"
-              onChange={(e) => setResturtant(e.target.value)}
+              className="signup-restaurant-input"
+              onChange={(e) => setrestaurant(e.target.value)}
             ></input>
           </div>
         </div>
-        <div className="signup-resturtant-names">
-          <div className="signup-resturtant-block">
-            <span className="signup-resturtant-content-title">First Name</span>
+        <div className="signup-restaurant-names">
+          <div className="signup-restaurant-block">
+            <span className="signup-restaurant-content-title">First Name</span>
             <div
               className={
                 typing === "firstname"
-                  ? "signup-resturtant-name-input-block-ontyping"
-                  : "signup-resturtant-name-input-block"
+                  ? "signup-restaurant-name-input-block-ontyping"
+                  : "signup-restaurant-name-input-block"
               }
               onClick={() => setTyping("firstname")}
             >
               <input
-                className="signup-resturtant-name-input"
+                className="signup-restaurant-name-input"
                 onChange={(e) => setFirstname(e.target.value)}
               ></input>
             </div>
           </div>
           <div style={{ width: "20px" }}></div>
-          <div className="signup-resturtant-block">
-            <span className="signup-resturtant-content-title">Last Name</span>
+          <div className="signup-restaurant-block">
+            <span className="signup-restaurant-content-title">Last Name</span>
             <div
               className={
                 typing === "lastname"
-                  ? "signup-resturtant-name-input-block-ontyping"
-                  : "signup-resturtant-name-input-block"
+                  ? "signup-restaurant-name-input-block-ontyping"
+                  : "signup-restaurant-name-input-block"
               }
               onClick={() => setTyping("lastname")}
             >
               <input
-                className="signup-resturtant-name-input"
+                className="signup-restaurant-name-input"
                 onChange={(e) => setLastname(e.target.value)}
               ></input>
             </div>
           </div>
         </div>
-        <div className="signup-resturtant-block">
-          <span className="signup-resturtant-content-title">Email</span>
+        <div className="signup-restaurant-block">
+          <span className="signup-restaurant-content-title">Email</span>
           <div
             className={
               typing === "email"
-                ? "signup-resturtant-input-block-ontyping"
-                : "signup-resturtant-input-block"
+                ? "signup-restaurant-input-block-ontyping"
+                : "signup-restaurant-input-block"
             }
             onClick={() => setTyping("email")}
           >
             <input
-              className="signup-resturtant-input"
+              className="signup-restaurant-input"
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
         </div>
-        <div className="signup-resturtant-block">
-          <span className="signup-resturtant-content-title">Password</span>
+        <div className="signup-restaurant-block">
+          <span className="signup-restaurant-content-title">Password</span>
           <div
             className={
               passwordError !== ""
-                ? "signup-resturtant-input-block-onerror"
+                ? "signup-restaurant-input-block-onerror"
                 : typing === "password"
-                ? "signup-resturtant-input-block-ontyping"
-                : "signup-resturtant-input-block"
+                ? "signup-restaurant-input-block-ontyping"
+                : "signup-restaurant-input-block"
             }
             onClick={() => setTyping("password")}
           >
             <input
-              className="signup-resturtant-input"
+              className="signup-restaurant-input"
               onChange={checkPassword}
             ></input>
           </div>
           {passwordError !== "" && (
-            <span className="signup-resturtant-content-error">
+            <span className="signup-restaurant-content-error">
               {passwordError}
             </span>
           )}
         </div>
-        <div className="signup-resturtant-block">
-          <span className="signup-resturtant-content-title">
+        <div className="signup-restaurant-block">
+          <span className="signup-restaurant-content-title">
             Confirm Password
           </span>
           <div
             className={
               confirmPasswordError !== ""
-                ? "signup-resturtant-input-block-onerror"
+                ? "signup-restaurant-input-block-onerror"
                 : typing === "confirmPassword"
-                ? "signup-resturtant-input-block-ontyping"
-                : "signup-resturtant-input-block"
+                ? "signup-restaurant-input-block-ontyping"
+                : "signup-restaurant-input-block"
             }
             onClick={() => setTyping("confirmPassword")}
           >
             <input
-              className="signup-resturtant-input"
+              className="signup-restaurant-input"
               onChange={checkConfirmPassword}
             ></input>
           </div>
           {confirmPasswordError !== "" && (
-            <span className="signup-resturtant-content-error">
+            <span className="signup-restaurant-content-error">
               {confirmPasswordError}
             </span>
           )}
@@ -209,32 +209,32 @@ export default function SignupResturtant() {
         <div
           className={
             mouse === "signup"
-              ? "signup-resturtant-submit-onmouse"
-              : "signup-resturtant-submit"
+              ? "signup-restaurant-submit-onmouse"
+              : "signup-restaurant-submit"
           }
           onMouseEnter={() => setMouse("signup")}
           onMouseLeave={() => setMouse("")}
           onClick={handleSubmit}
         >
-          <span className="signup-resturtant-google-content">Sign up</span>
+          <span className="signup-restaurant-google-content">Sign up</span>
         </div>
         <div
           className={
             mouse === "google"
-              ? "signup-resturtant-google-onmouse"
-              : "signup-resturtant-google"
+              ? "signup-restaurant-google-onmouse"
+              : "signup-restaurant-google"
           }
           onMouseEnter={() => setMouse("google")}
           onMouseLeave={() => setMouse("")}
         >
-          <div className="signup-resturtant-google-icon-bg">
+          <div className="signup-restaurant-google-icon-bg">
             <img
               src={google}
               alt="google"
-              className="signup-resturtant-google-icon"
+              className="signup-restaurant-google-icon"
             ></img>
           </div>
-          <span className="signup-resturtant-google-content">
+          <span className="signup-restaurant-google-content">
             Continue with Google
           </span>
         </div>
