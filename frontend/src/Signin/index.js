@@ -32,7 +32,7 @@ export default function Signin() {
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div
         style={{
           width: "100%",
@@ -55,7 +55,7 @@ export default function Signin() {
             <span>Sign up</span>
           </div>
         </div>
-        
+
         <div className="signin-block">
           <span className="signin-content-title">Email</span>
           <div
@@ -73,11 +73,19 @@ export default function Signin() {
           </div>
         </div>
         <div className="signin-block">
-          <div style = {{display : "flex", flexDirection: "row"}}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
             <span className="signin-content-title">Password</span>
-            <span className= {mouse === "forgot" ? "signin-forgotpassword-onmouse":"signin-forgotpassword"}
+            <span
+              className={
+                mouse === "forgot"
+                  ? "signin-forgotpassword-onmouse"
+                  : "signin-forgotpassword"
+              }
               onMouseEnter={() => setMouse("forgot")}
-              onMouseLeave={() => setMouse("")}>Forgot your password</span>
+              onMouseLeave={() => setMouse("")}
+            >
+              Forgot your password
+            </span>
           </div>
           <div
             className={

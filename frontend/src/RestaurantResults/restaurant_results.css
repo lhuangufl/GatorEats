@@ -1,4 +1,4 @@
-.resturtant-results {
+.restaurant-results {
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -6,22 +6,23 @@
   justify-content: flex-start;
   /* background-color: blue; */
 }
-.resturtant-results-title {
+.restaurant-results-title {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 20px;
   /* background-color: blue; */
   width: 90%;
   height: 50px;
 }
-.resturtant-results-title-content {
+.restaurant-results-title-content {
   margin-top: 20px;
   font-size: 28px;
   font-weight: bold;
   color: black;
 }
 
-.resturtant-results-block {
+.restaurant-results-block {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -29,7 +30,7 @@
   width: 1400px;
   height: 250px;
 }
-.resturtant-results-block-content {
+.restaurant-results-block-content {
   margin-left: 80px;
   display: flex;
   flex-direction: column;
@@ -39,10 +40,10 @@
   width: 250px;
   height: 230px;
 }
-.resturtant-results-image {
+.restaurant-results-image {
   width: 180px;
 }
-.resturtant-results-name {
+.restaurant-results-name {
   margin-top: 10px;
   font-size: 20px;
   font-weight: bold;
