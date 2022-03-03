@@ -143,7 +143,7 @@ func CreateRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
 		return err
 	}
 
-	_, err := dbConn.Query(db.CreateRestaurant, r.Rname, r.Location, r.Rating, r.Rtype, r.Phone, r.ZipCode)
+	_, err := dbConn.Query(db.CreateRestaurant, r.Rname, r.Phone, r.ZipCode)
 	if err != nil {
 		return err
 	}
@@ -164,8 +164,7 @@ func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
 
 	for rows.Next() {
 		var restaurant db.Restaurant
-		err = rows.Scan(&restaurant.ID, &restaurant.Rname, &restaurant.Location, &restaurant.Rating,
-			&restaurant.Rtype, &restaurant.Phone)
+		err = rows.Scan(&restaurant.ID, &restaurant.Rname, &restaurant.ZipCode, &restaurant.Phone)
 		if err != nil {
 			return c.Status(http.StatusUnauthorized).
 				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
