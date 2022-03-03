@@ -8,7 +8,7 @@ const (
 	CreateUserQuery                 = `INSERT INTO users(id, name, password, email) VALUES (DEFAULT, $1 , $2, $3);`
 	GetUserByIDQuery                = `SELECT * FROM users WHERE id = $1`
 	GetUserByEmailQuery             = `SELECT * FROM users WHERE email = $1`
-	CreateRestaurant                = `INSERT INTO restaurants(id, rname, location, rating, rtype, phone, zip_code) VALUES (DEFAULT, $1 , $2, $3, $4, $5, $6);`
+	CreateRestaurant                = `INSERT INTO restaurants(id, rname, location, rating, rtype, phone, zipcode) VALUES (DEFAULT, $1 , $2, $3, $4, $5, $6);`
 	GetAllRestaurantsQuery          = `SELECT * FROM restaurants`
-	GetAllRestaurantsQueryByZipCode = `SELECT * FROM restaurants WHERE zip_code > $1 and zip_code < $2`
+	GetAllRestaurantsQueryByZipCode = `SELECT * FROM restaurants WHERE zipcode > $1 and zipcode < $2`
 )
