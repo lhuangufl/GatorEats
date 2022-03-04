@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import "./restaurant_results.css";
+import React, {useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import "./SearchResult.css";
 import axios from "axios";
-import NavBar from "../NavBar/index";
-import restaurant from "./images/restaurant.png";
+import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
+import restaurant from "../../../img/restaurant.png";
 
 export default function RestaurantResults() {
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ export default function RestaurantResults() {
   const params = useParams();
   return (
     <div className="restaurant-results">
-      <NavBar />
+      <AuthedNavBar/>
       <div
         style={{
           width: "100%",
