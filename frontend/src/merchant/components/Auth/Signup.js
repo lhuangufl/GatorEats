@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./signup_restaurant.css";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import "./Signup.css";
 import axios from "axios";
-import google from "./images/google.png";
-import NavBar from "../NavBar/index";
+import google from "../../../img/google.png";
+import NavBar from "../../../customer/components/NavBar/NavBar";
 
 export default function Signuprestaurant() {
   const [typing, setTyping] = useState("");
@@ -62,7 +62,7 @@ export default function Signuprestaurant() {
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar />
+      <NavBar/>
       <div
         style={{
           width: "100%",
@@ -124,7 +124,7 @@ export default function Signuprestaurant() {
               ></input>
             </div>
           </div>
-          <div style={{ width: "20px" }}></div>
+          <div style={{width: "20px"}}></div>
           <div className="signup-restaurant-block">
             <span className="signup-restaurant-content-title">Last Name</span>
             <div
@@ -165,8 +165,8 @@ export default function Signuprestaurant() {
               passwordError !== ""
                 ? "signup-restaurant-input-block-onerror"
                 : typing === "password"
-                ? "signup-restaurant-input-block-ontyping"
-                : "signup-restaurant-input-block"
+                  ? "signup-restaurant-input-block-ontyping"
+                  : "signup-restaurant-input-block"
             }
             onClick={() => setTyping("password")}
           >
@@ -190,8 +190,8 @@ export default function Signuprestaurant() {
               confirmPasswordError !== ""
                 ? "signup-restaurant-input-block-onerror"
                 : typing === "confirmPassword"
-                ? "signup-restaurant-input-block-ontyping"
-                : "signup-restaurant-input-block"
+                  ? "signup-restaurant-input-block-ontyping"
+                  : "signup-restaurant-input-block"
             }
             onClick={() => setTyping("confirmPassword")}
           >
