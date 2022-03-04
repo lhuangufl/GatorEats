@@ -6,6 +6,6 @@
 
 ## routers
 
-    1. go to index.js to add or check router
+    1. go to AuthedNavBar.js to add or check router
 
     2. use useNavigation to navigate to other pages

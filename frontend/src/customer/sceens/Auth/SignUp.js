@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./signup.css";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import "./SignUp.css";
 import axios from "axios";
-import google from "./images/google.png";
-import NavBar from "./../NavBar/index";
+import google from "../../../img/google.png";
+import NavBar from "../../components/NavBar/NavBar";
 
 export default function Signup() {
   const [typing, setTyping] = useState("");
@@ -60,7 +60,7 @@ export default function Signup() {
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar />
+      <NavBar/>
       <div
         style={{
           width: "100%",
@@ -100,7 +100,7 @@ export default function Signup() {
               ></input>
             </div>
           </div>
-          <div style={{ width: "20px" }}></div>
+          <div style={{width: "20px"}}></div>
           <div className="signup-block">
             <span className="signup-content-title">Last Name</span>
             <div
@@ -141,8 +141,8 @@ export default function Signup() {
               passwordError !== ""
                 ? "signup-input-block-onerror"
                 : typing === "password"
-                ? "signup-input-block-ontyping"
-                : "signup-input-block"
+                  ? "signup-input-block-ontyping"
+                  : "signup-input-block"
             }
             onClick={() => setTyping("password")}
           >
@@ -159,8 +159,8 @@ export default function Signup() {
               confirmPasswordError !== ""
                 ? "signup-input-block-onerror"
                 : typing === "confirmPassword"
-                ? "signup-input-block-ontyping"
-                : "signup-input-block"
+                  ? "signup-input-block-ontyping"
+                  : "signup-input-block"
             }
             onClick={() => setTyping("confirmPassword")}
           >

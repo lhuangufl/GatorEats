@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./navbar.css";
+import "./NavBar.css";
 
 export default function NavBar() {
   const thisWidth = window.innerWidth;

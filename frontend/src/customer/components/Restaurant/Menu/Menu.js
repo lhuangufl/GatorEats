@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import "./restaurant_menu.css";
+import React, {useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import "./Menu.css";
 import axios from "axios";
-import NavBar from "../NavBar/index";
-import food from "./images/food.png";
-import restaurant from "./images/restaurant.png";
+import AuthedNavBar from "../../NavBar/AuthedNavBar";
+import food from "../../../../img/food.png";
+import restaurant from "../../../../img/restaurant.png";
 
 export default function RestaurantMenu() {
   const navigate = useNavigate();
@@ -123,7 +123,7 @@ export default function RestaurantMenu() {
   const params = useParams();
   return (
     <div className="restaurant-menu">
-      <NavBar />
+      <AuthedNavBar/>
       <div
         style={{
           width: "100%",
