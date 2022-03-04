@@ -6,7 +6,9 @@ import App from "./App";
 import Homepage from "./Homepage/index";
 import Signin from "./Signin/index";
 import Signup from "./Signup/index";
-import SignupResturtant from "./SignupResturtant/index";
+import SignupRestaurant from "./SignupRestaurant/index";
+import RestaurantResults from "./RestaurantResults/index";
+import RestaurantMenu from "./RestaurantMenu/index";
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -17,7 +19,15 @@ ReactDOM.render(
         <Route path="/app" element={<App />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/signup_resturtant" element={<SignupResturtant />}></Route>
+        <Route path="/signup_restaurant" element={<SignupRestaurant />}></Route>
+        <Route
+          path="/restaurant_results/:address"
+          element={<RestaurantResults />}
+        ></Route>
+        <Route
+          path="/restaurant_menu/:restaurant"
+          element={<RestaurantMenu />}
+        ></Route>
         <Route
           path="/about"
           element={

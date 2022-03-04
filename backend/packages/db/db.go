@@ -3,7 +3,6 @@ package db
 import (
 	"database/sql"
 	"fmt"
-	"goapp/packages/config"
 	"path/filepath"
 
 	"github.com/apex/log"
@@ -13,11 +12,11 @@ import (
 )
 
 func ConnectDB() (*sql.DB, error) {
-	user := config.Config[config.POSTGRES_USER]
-	database := config.Config[config.POSTGRES_DB]
-	host := config.Config[config.POSTGRES_SERVER_HOST]
+	user := "fqhmuqxpozwlin:fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315"
+	host := "ec2-52-206-193-199.compute-1.amazonaws.com"
+	database := "db63l3ukuv77j8"
 
-	connString := fmt.Sprintf("postgresql://%s@%s:5432/%s?sslmode=disable", user, host, database)
+	connString := fmt.Sprintf("postgresql://%s@%s:5432/%s", user, host, database)
 
 	db, _ := sql.Open("postgres", connString)
 	if err := db.Ping(); err != nil {

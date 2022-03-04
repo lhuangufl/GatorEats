@@ -36,9 +36,9 @@ def signup_here():
         print(data)
     return "signup"
 
-@app.route("/react/signup_resturtant", methods=['GET', 'POST'])
+@app.route("/react/signup_restaurant", methods=['GET', 'POST'])
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
-def signup_resturtant():
+def signup_restaurant():
     # return {
     #     "home": "true"
     # }

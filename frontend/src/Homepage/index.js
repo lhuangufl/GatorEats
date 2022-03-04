@@ -4,7 +4,7 @@ import NavBar from "./../NavBar/index";
 import homeBackground from "./images/homeBackground.svg";
 import location from "./images/location.svg";
 import deliver from "./images/deliver.png";
-import resturtant from "./images/resturtant.png";
+import restaurant from "./images/restaurant.png";
 import "./homepage.css";
 
 export default function Homepage() {
@@ -58,6 +58,9 @@ export default function Homepage() {
             }
             onMouseEnter={() => setMouse("submit")}
             onMouseLeave={() => setMouse("")}
+            onClick={() =>
+              address !== "" && navigate(`/restaurant_results/${address}`)
+            }
           >
             <span>find my food</span>
           </div>
@@ -87,20 +90,20 @@ export default function Homepage() {
         <div className="home-bottom-sections">
           <img
             className="home-bottom-sections-image"
-            src={resturtant}
-            alt="resturtant"
+            src={restaurant}
+            alt="restaurant"
           ></img>
           <span
-            onMouseEnter={() => setMouse("resturtant")}
+            onMouseEnter={() => setMouse("restaurant")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signup_resturtant")}
+            onClick={() => navigate("/signup_restaurant")}
             className={
-              mouse === "resturtant"
+              mouse === "restaurant"
                 ? "home-bottom-sections-link-onmouse"
                 : "home-bottom-sections-link"
             }
           >
-            Become a resturtant holder
+            Become a restaurant holder
           </span>
         </div>
         <div className="home-bottom-sections-mid"></div>
