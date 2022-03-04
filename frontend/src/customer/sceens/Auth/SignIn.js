@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./signin.css";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import "./SignIn.css";
 import axios from "axios";
-import NavBar from "./../NavBar/index";
-import google from "./images/google.png";
+import NavBar from "../../components/NavBar/NavBar";
+import google from "../../../img/google.png";
 
 export default function Signin() {
   const thisWidth = window.innerWidth;
@@ -27,12 +27,14 @@ export default function Signin() {
       .catch((err) => {
         console.log(err);
       });
+    // TODO: Add auth
+    navigate("/home")
   };
 
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar />
+      <NavBar/>
       <div
         style={{
           width: "100%",
@@ -73,7 +75,7 @@ export default function Signin() {
           </div>
         </div>
         <div className="signin-block">
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{display: "flex", flexDirection: "row"}}>
             <span className="signin-content-title">Password</span>
             <span
               className={
