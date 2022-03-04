@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import NavBar from "./../NavBar/index";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import NavBar from "../../components/NavBar/NavBar";
 import homeBackground from "./images/homeBackground.svg";
 import location from "./images/location.svg";
 import deliver from "./images/deliver.png";
 import restaurant from "./images/restaurant.png";
-import "./homepage.css";
+import "./Homepage.css";
 
-export default function Homepage() {
+export default function Welcome() {
   const thisWidth = window.innerWidth;
   const thisHeight = window.innerHeight;
   const [mouse, setMouse] = useState("");
@@ -29,7 +29,7 @@ export default function Homepage() {
           backgroundImage: `url(${homeBackground})`,
         }}
       >
-        <NavBar />
+        <NavBar/>
         <div className="home-title">
           <span>Search foods near to you</span>
         </div>
@@ -38,7 +38,7 @@ export default function Homepage() {
             <img
               src={location}
               alt="location"
-              style={{ height: "30px", marginLeft: "10px" }}
+              style={{height: "30px", marginLeft: "10px"}}
             ></img>
             <input
               className="home-input"
@@ -53,8 +53,8 @@ export default function Homepage() {
               address === ""
                 ? "home-submit-disable"
                 : mouse === "submit"
-                ? "home-submit-onmouse"
-                : "home-submit-enable"
+                  ? "home-submit-onmouse"
+                  : "home-submit-enable"
             }
             onMouseEnter={() => setMouse("submit")}
             onMouseLeave={() => setMouse("")}
