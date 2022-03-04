@@ -125,8 +125,8 @@ func Home(c *fiber.Ctx, dbConn *sql.DB) error {
 	}
 	for rows.Next() {
 		var restaurant db.Restaurant
-		err = rows.Scan(&restaurant.ID, &restaurant.Rname, &restaurant.Location, &restaurant.Rating,
-			&restaurant.Rtype, &restaurant.Phone)
+		err = rows.Scan(&restaurant.ID, &restaurant.Name, &restaurant.Owneremail, &restaurant.Zipcode,
+			&restaurant.CreatedAt, &restaurant.UpdatedAt)
 		if err != nil {
 			return c.Status(http.StatusUnauthorized).
 				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
@@ -137,13 +137,14 @@ func Home(c *fiber.Ctx, dbConn *sql.DB) error {
 }
 
 func CreateRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
+	print("POST Request : Sign up as a restaurant\n")
 	r := new(db.Restaurant)
 
 	if err := c.BodyParser(r); err != nil {
 		return err
 	}
 
-	_, err := dbConn.Query(db.CreateRestaurant, r.Rname, r.Location, r.Rating, r.Rtype, r.Phone, r.ZipCode)
+	_, err := dbConn.Query(db.CreateRestaurant, r.Owneremail, r.Password, r.Name, r.Zipcode, r.Phone)
 	if err != nil {
 		return err
 	}
@@ -151,21 +152,21 @@ func CreateRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
 }
 
 func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
-	zipCodeStr := c.Query("zipCode", "0")
+	print("GET Request : Searching for restaurant\n")
+	zipCodeStr := c.Query("ZipCode")
 	zipCode, _ := strconv.ParseInt(zipCodeStr, 10, 64)
-
+	print(zipCode, zipCode-10, zipCode+10)
 	restaurants := []db.Restaurant{}
-	rows, err := dbConn.Query(db.GetAllRestaurantsQueryByZipCode, zipCode-10, zipCode+10)
+	rows, err := dbConn.Query(db.GetAllRestaurantsQueryByZipCode, zipCodeStr)
 	if err != nil {
 		return c.Status(http.StatusUnauthorized).
 			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
 	}
 	defer rows.Close()
-
+	print(rows)
 	for rows.Next() {
 		var restaurant db.Restaurant
-		err = rows.Scan(&restaurant.ID, &restaurant.Rname, &restaurant.Location, &restaurant.Rating,
-			&restaurant.Rtype, &restaurant.Phone)
+		err = rows.Scan(&restaurant.Owneremail, &restaurant.Name, &restaurant.Zipcode, &restaurant.Phone)
 		if err != nil {
 			return c.Status(http.StatusUnauthorized).
 				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})

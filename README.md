@@ -4,7 +4,7 @@ This is a web application for meal ordering online, similar to Uber eats.
 
 This project will use Golang for banckend and React.js for frontend.
 
-Team Member:
+## Team Member:
 
     Lin Huang,
 
@@ -15,8 +15,7 @@ Team Member:
     Hongru Chu,
 
 
-
-1.1 Create MySql instance on Google Cloud Platform
+## Postgresql Credentials
 
 *Host: ec2-52-206-193-199.compute-1.amazonaws.com
 *Database: db63l3ukuv77j8
@@ -28,9 +27,9 @@ Team Member:
 
 Server is live on localhost:8081
 
-1. Establish connection via pgAdmin
+## Establish connection via pgAdmin
 
-2. SQL Create Tables
+## SQL Create Tables
 
 ```
 CREATE TABLE IF NOT EXISTS users (
@@ -74,8 +73,6 @@ CREATE TABLE IF NOT EXISTS gatorOrder
 );
 ```
 
-3. Home, Login and Register
-
 ## Endpoints
 | endpoint                      | method | body                                           | description       |
 |-------------------------------|--------|------------------------------------------------|-------------------|
@@ -83,5 +80,43 @@ CREATE TABLE IF NOT EXISTS gatorOrder
 | /api/logout                   | GET    |                                                | GET user logout                     |
 | /api/login                    | POST   | { email String, password String }              | login user                          |
 | /api/register                 | POST   | { email String, password String, name String } | register new user                   |
-| /api/filterbyzip               | POST   | {"ownerID","password"，"name","zipcode"，"phone":} | display List of Restaurant at zip   |
-| /api/registerarestaurant      | POST   | {"ownerID","password"，"name","zipcode"，"phone":} | Register New Restaurant             |
+| /api/restaurantbyzipcode      | GET    | {"owneremail", "name","zipcode"，"phone":}        | display List of Restaurant near a zip   |
+| /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone":} | Register New Restaurant             |
+
+
+## Example of Endpoints uses
+
+```javascript
+import axios from "axios";
+axios.post("http://localhost:8081/api/login", {
+        email: email,
+        password: password,
+      })
+axios.post("http://localhost:8081/api/login", {
+        name: name,
+        email: email,
+        password: password,
+      })
+```
+
+## Running backend locally
+Clone this repository
+Download and install [golang](https://golang.org)
+
+Ensure you have `make` installed.
+
+```bash
+cd backend
+go mod tidy
+make build-run
+```
+
+This will start the go server & the react frontend.
+
+### Using docker
+Ensure you have `docker` installed
+
+```bash
+make docker-build
+make docker-run
+```
