@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS gatorOrder
 |-------------------------------|--------|------------------------------------------------|-------------------|
 | /api/session                  | GET    |                                                | GET user session                    |
 | /api/logout                   | GET    |                                                | GET user logout                     |
-| /api/login                    | POST   | { email String, password String }              | login user                          |
+| /api/login                    | GET    | { email String, password String }              | login user                          |
 | /api/register                 | POST   | { email String, password String, name String } | register new user                   |
-| /api/filterbyzip               | POST   | {"ownerID","password"，"name","zipcode"，"phone":} | display List of Restaurant at zip   |
-| /api/registerarestaurant      | POST   | {"ownerID","password"，"name","zipcode"，"phone":} | Register New Restaurant             |
+| /api/restaurantbyzipcode      | GET    | {"owneremail", "name","zipcode"，"phone":}        | display List of Restaurant near a zip   |
+| /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone":} | Register New Restaurant             |
