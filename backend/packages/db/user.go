@@ -31,13 +31,31 @@ type User struct {
 }
 
 type Restaurant struct {
-	ID       string `json:"id,omitempty"`
-	Rname    string `json:"rname,omitempty"`
-	Location string `json:"location,omitempty"`
-	Rating   int16  `json:"rating,omitempty"`
-	Rtype    string `json:"rtype,omitempty"`
-	Phone    string `json:"phone,omitempty"`
-	ZipCode  int64  `json:"zip_code"`
+	ID         string `json:"id,omitempty"`
+	Owneremail string `json:"owneremail,omitempty"`
+	Password   string `json:"password,omitempty"`
+	Name       string `json:"name,omitempty"`
+	Zipcode    string `json:"zipcode,omitempty"`
+	Phone      string `json:"phone,omitempty"`
+	CreatedAt  string `json:"created_at,omitempty"`
+	UpdatedAt  string `json:"updated_at,omitempty"`
+}
+
+type FoodMenu struct {
+	FID       string  `json:"fid,omitempty"`
+	RID       string  `json:"rid,omitempty"`
+	Name      string  `json:"name,omitempty"`
+	Price     float64 `json:"price,omitempty"`
+	CreatedAt string  `json:"created_at,omitempty"`
+	UpdatedAt string  `json:"updated_at,omitempty"`
+}
+type OrderHistory struct {
+	OID       string  `json:"oid,omitempty"`
+	CID       string  `json:"cid,omitempty"`
+	RID       string  `json:"rid,omitempty"`
+	Price     float64 `json:"price,omitempty"`
+	CreatedAt string  `json:"created_at,omitempty"`
+	UpdatedAt string  `json:"updated_at,omitempty"`
 }
 
 func (user *User) HashPassword() error {
