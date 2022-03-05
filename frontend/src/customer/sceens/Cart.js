@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Cart.css";
-import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
+import AuthedNavBar from "../components/NavBar/AuthedNavBar";
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -13,13 +12,13 @@ export default function Cart() {
         <div className="container px-4 px-lg-5 my-5">
           <div className="row">
             <div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-              
+
               <div className="table-responsive">
                 <table className="table">
                   <thead>
                   <tr>
                     <th scope="col" className="border-0 bg-light">
-                      <div className="p-2 px-3 text-uppercase">Product</div>
+                      <div className="p-2 px-3 text-uppercase">Item</div>
                     </th>
                     <th scope="col" className="border-0 bg-light">
                       <div className="py-2 text-uppercase">Price</div>
@@ -28,7 +27,7 @@ export default function Cart() {
                       <div className="py-2 text-uppercase">Quantity</div>
                     </th>
                     <th scope="col" className="border-0 bg-light">
-                      <div className="py-2 text-uppercase">Remove</div>
+                      <div className="py-2 text-uppercase">Note</div>
                     </th>
                   </tr>
                   </thead>
@@ -36,47 +35,53 @@ export default function Cart() {
                   <tr>
                     <th scope="row" className="border-0">
                       <div className="p-2">
-                        <img src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt=""
-                             width="70" className="img-fluid rounded shadow-sm"/>
+                        <img
+                          src="https://media.istockphoto.com/photos/hamburger-with-cheese-and-french-fries-picture-id1188412964?k=20&m=1188412964&s=612x612&w=0&h=Ow-uMeygg90_1sxoCz-vh60SQDssmjP06uGXcZ2MzPY="
+                          alt=""
+                          width="70" className="img-fluid rounded shadow-sm"/>
                         <div className="ms-3 d-inline-block align-middle">
-                          <h5 className="mb-0"><a href="#" className="text-dark d-inline-block align-middle">Product
-                            1</a>
+                          <h5 className="mb-0"><a href="#"
+                                                  className="text-dark d-inline-block align-middle">Hamburger</a>
                           </h5>
                         </div>
                       </div>
                     </th>
-                    <td className="border-0 align-middle"><strong>$79.00</strong></td>
-                    <td className="border-0 align-middle"><strong>3</strong></td>
+                    <td className="border-0 align-middle"><strong>$7.99</strong></td>
+                    <td className="border-0 align-middle"><strong>1</strong></td>
                     <td className="border-0 align-middle"><a href="#" className="text-dark"><i
-                      className="bi bi-trash"></i></a></td>
+                      className="bi bi-trash"></i>No pickles</a></td>
                   </tr>
                   <tr>
                     <th scope="row">
                       <div className="p-2">
-                        <img src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt=""
-                             width="70" className="img-fluid rounded shadow-sm"/>
+                        <img
+                          src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGNvY2ElMjBjb2xhfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+                          alt=""
+                          width="70" className="img-fluid rounded shadow-sm"/>
                         <div className="ms-3 d-inline-block align-middle">
-                          <h5 className="mb-0"><a href="#" className="text-dark d-inline-block">Product 2</a></h5>
+                          <h5 className="mb-0"><a href="#" className="text-dark d-inline-block">Coke</a></h5>
                         </div>
                       </div>
                     </th>
-                    <td className="align-middle"><strong>$79.00</strong></td>
-                    <td className="align-middle"><strong>3</strong></td>
+                    <td className="align-middle"><strong>$2.99</strong></td>
+                    <td className="align-middle"><strong>2</strong></td>
                     <td className="align-middle"><a href="#" className="text-dark"><i className="bi bi-trash"></i></a>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">
                       <div className="p-2">
-                        <img src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt=""
-                             width="70" className="img-fluid rounded shadow-sm"/>
+                        <img
+                          src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/french-fries-royalty-free-image-1634646257.jpg"
+                          alt=""
+                          width="70" className="img-fluid rounded shadow-sm"/>
                         <div className="ms-3 d-inline-block align-middle">
-                          <h5 className="mb-0"><a href="#" className="text-dark d-inline-block">Product 3</a></h5>
+                          <h5 className="mb-0"><a href="#" className="text-dark d-inline-block">Fries</a></h5>
                         </div>
                       </div>
                     </th>
-                    <td className="align-middle"><strong>$79.00</strong></td>
-                    <td className="align-middle"><strong>3</strong></td>
+                    <td className="align-middle"><strong>$1.99</strong></td>
+                    <td className="align-middle"><strong>1</strong></td>
                     <td className="align-middle"><a href="#" className="text-dark"><i className="bi bi-trash"></i></a>
                     </td>
                   </tr>
@@ -116,14 +121,14 @@ export default function Cart() {
                   entered.</em></p>
                 <ul className="list-unstyled mb-4">
                   <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Order
-                    Subtotal </strong><strong>$390.00</strong></li>
-                  <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Shipping
-                    and handling</strong><strong>$10.00</strong></li>
+                    Subtotal </strong><strong>$12.97</strong></li>
+                  <li className="d-flex justify-content-between py-3 border-bottom"><strong className="text-muted">Service
+                    Fee</strong><strong>$3.00</strong></li>
                   <li className="d-flex justify-content-between py-3 border-bottom"><strong
-                    className="text-muted">Tax</strong><strong>$0.00</strong></li>
+                    className="text-muted">Tax</strong><strong>$1.02</strong></li>
                   <li className="d-flex justify-content-between py-3 border-bottom"><strong
                     className="text-muted">Total</strong>
-                    <h5 className="fw-bold">$400.00</h5>
+                    <h5 className="fw-bold">$16.99</h5>
                   </li>
                 </ul>
                 <a href="#" className="btn btn-dark rounded-pill py-2 d-md-block">Procceed to checkout</a>
