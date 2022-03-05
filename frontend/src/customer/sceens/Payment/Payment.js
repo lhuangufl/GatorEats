@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cleave from 'cleave.js/react';
 import './Payment.css'
+import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
 
 const imageUrls = [
   "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png",
@@ -63,7 +64,8 @@ export default function Payment() {
   }
   return (
     <div>
-      <div className="container">
+      <AuthedNavBar/>
+      <div className="payment-container">
         <form id="form">
           <div id="card">
             <div className="header">

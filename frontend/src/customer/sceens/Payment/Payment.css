@@ -7,21 +7,10 @@
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background: #eee;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
+.payment-container {
+  position: center;
+  padding-top: 200px;
+  padding-left: 350px;
 }
 
 #form {
