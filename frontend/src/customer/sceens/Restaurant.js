@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
-import restaurant from "../../../img/restaurant.png";
+import AuthedNavBar from "../components/NavBar/AuthedNavBar";
+import restaurant from "../../img/restaurant.png";
 
 export default function Restaurant() {
   const navigate = useNavigate();
