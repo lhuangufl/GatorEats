@@ -6,14 +6,15 @@ describe("search result", () => {
     cy.log("startng test");
   });
   it("shoud have user info", () => {
+    cy.contains("Result for");
+    cy.contains("img");
     // cy.visit("http://localhost:3000/signup");
-    cy.intercept("POST", "http://localhost:5000/r/react/search_result").as(
-      "searchResult"
-    );
-    // cy.wait("@userSignup");
-    cy.get("@searchResult").then((res) => {
-      console.log(res);
-      Cypress.log(res);
-    });
+    // cy.intercept("POST", "http://localhost:5000/r/react/search_result").as(
+    //   "searchResult"
+    // );
+    // // cy.wait("@userSignup");
+    // cy.get("@searchResult").then((res) => {
+    //   console.log(res);
+    // });
   });
 });
