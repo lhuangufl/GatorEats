@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import Welcome from "./customer/sceens/Homepage/Welcome";
@@ -10,9 +10,13 @@ import SignupRestaurant from "./merchant/components/Auth/Signup";
 import RestaurantResults from "./customer/sceens/SearchResult/SearchResult";
 import RestaurantMenu from "./customer/components/Restaurant/Menu/Menu";
 import Home from "./customer/sceens/Homepage/Home";
-import Orders from "./customer/sceens/Orders/Orders";
-import Account from "./customer/sceens/Account/Account";
+import Orders from "./customer/sceens/Orders";
+import Profile from "./customer/sceens/Profile";
 // import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Restaurant from "./customer/sceens/Restaurant";
+import Cart from "./customer/sceens/Cart";
+import Payment from "./customer/sceens/Payment";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,10 +28,12 @@ ReactDOM.render(
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/home" element={<Home/>}></Route>
         <Route path="/orders" element={<Orders/>}></Route>
-        <Route path="/account" element={<Account/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="/payment" element={<Payment/>}></Route>
+        <Route path="/cart" element={<Cart/>}></Route>
         <Route
           path="/restaurant/"
-          element={<RestaurantResults/>}
+          element={<Restaurant/>}
         ></Route>
         <Route path="/signup_restaurant" element={<SignupRestaurant/>}></Route>
 
