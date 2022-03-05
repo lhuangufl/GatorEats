@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 import google from "../../../img/google.png";
@@ -10,8 +10,9 @@ export default function Signuprestaurant() {
   const [mouse, setMouse] = useState("");
 
   const [restaurant, setrestaurant] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  // const [firstname, setFirstname] = useState("");
+  // const [lastname, setLastname] = useState("");
+  const [zipcode, setZipcode] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
@@ -45,15 +46,15 @@ export default function Signuprestaurant() {
     axios
       .post("http://127.0.0.1:5000/react/signup_restaurant", {
         restaurantname: restaurant,
-        firstname: firstname,
-        lastname: lastname,
+        // firstname: firstname,
+        // lastname: lastname,
+        zipcode: zipcode,
         email: email,
         password: password,
-      }) /*.then(res => {
-        const token = res.data;
-        this.props.setToken(token);
-        this.setState({loggedIn: true});
-    })*/
+      })
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -62,7 +63,7 @@ export default function Signuprestaurant() {
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div
         style={{
           width: "100%",
@@ -107,7 +108,7 @@ export default function Signuprestaurant() {
             ></input>
           </div>
         </div>
-        <div className="signup-restaurant-names">
+        {/* <div className="signup-restaurant-names">
           <div className="signup-restaurant-block">
             <span className="signup-restaurant-content-title">First Name</span>
             <div
@@ -124,7 +125,7 @@ export default function Signuprestaurant() {
               ></input>
             </div>
           </div>
-          <div style={{width: "20px"}}></div>
+          <div style={{ width: "20px" }}></div>
           <div className="signup-restaurant-block">
             <span className="signup-restaurant-content-title">Last Name</span>
             <div
@@ -140,6 +141,22 @@ export default function Signuprestaurant() {
                 onChange={(e) => setLastname(e.target.value)}
               ></input>
             </div>
+          </div>
+        </div> */}
+        <div className="signup-restaurant-block">
+          <span className="signup-restaurant-content-title">Zip code</span>
+          <div
+            className={
+              typing === "zipcode"
+                ? "signup-restaurant-input-block-ontyping"
+                : "signup-restaurant-input-block"
+            }
+            onClick={() => setTyping("zipcode")}
+          >
+            <input
+              className="signup-restaurant-input"
+              onChange={(e) => setZipcode(e.target.value)}
+            ></input>
           </div>
         </div>
         <div className="signup-restaurant-block">
@@ -165,8 +182,8 @@ export default function Signuprestaurant() {
               passwordError !== ""
                 ? "signup-restaurant-input-block-onerror"
                 : typing === "password"
-                  ? "signup-restaurant-input-block-ontyping"
-                  : "signup-restaurant-input-block"
+                ? "signup-restaurant-input-block-ontyping"
+                : "signup-restaurant-input-block"
             }
             onClick={() => setTyping("password")}
           >
@@ -190,8 +207,8 @@ export default function Signuprestaurant() {
               confirmPasswordError !== ""
                 ? "signup-restaurant-input-block-onerror"
                 : typing === "confirmPassword"
-                  ? "signup-restaurant-input-block-ontyping"
-                  : "signup-restaurant-input-block"
+                ? "signup-restaurant-input-block-ontyping"
+                : "signup-restaurant-input-block"
             }
             onClick={() => setTyping("confirmPassword")}
           >
