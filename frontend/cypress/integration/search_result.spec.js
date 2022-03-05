@@ -13,6 +13,7 @@ describe("search result", () => {
     // cy.wait("@userSignup");
     cy.get("@searchResult").then((res) => {
       console.log(res);
+      Cypress.log(res);
     });
   });
 });

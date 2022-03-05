@@ -9,8 +9,11 @@ export default function RestaurantResults() {
   const navigate = useNavigate();
   const params = useParams();
   const [resData, setResData] = useState([]);
+  const [value, setValue] = useState("");
+  const [count, setCount] = useState(-1);
   var rows = [];
   useEffect(() => {
+    setCount(count + 1);
     axios
       .post("http://127.0.0.1:5000/react/search_result", {
         zipcode: params.address,
@@ -22,7 +25,8 @@ export default function RestaurantResults() {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, [value]);
+  const onChange = ({ target }) => setValue(target.value);
   // console.log(1);
   // let resData = [
   //   {
