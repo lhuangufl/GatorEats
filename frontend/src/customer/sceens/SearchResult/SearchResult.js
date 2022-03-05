@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./SearchResult.css";
 import AuthedNavBar from "../../components/NavBar/AuthedNavBar";

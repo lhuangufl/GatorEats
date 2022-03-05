@@ -72,6 +72,7 @@ export default function Signin() {
             onClick={() => setTyping("email")}
           >
             <input
+              id="email"
               className="signin-input"
               onChange={(e) => setEmail(e.target.value)}
             ></input>
@@ -101,6 +102,7 @@ export default function Signin() {
             onClick={() => setTyping("password")}
           >
             <input
+              id="password"
               className="signup-input"
               onChange={(e) => setPassword(e.target.value)}
             ></input>
