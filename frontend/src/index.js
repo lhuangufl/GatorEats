@@ -16,7 +16,7 @@ import Profile from "./customer/sceens/Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Restaurant from "./customer/sceens/Restaurant";
 import Cart from "./customer/sceens/Cart";
-import Payment from "./customer/sceens/Payment";
+import Payment from "./customer/sceens/Payment/Payment";
 
 ReactDOM.render(
   <React.StrictMode>
