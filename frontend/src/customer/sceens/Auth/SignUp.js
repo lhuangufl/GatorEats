@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import axios from "axios";
 import google from "../../../img/google.png";
@@ -41,17 +41,34 @@ export default function Signup() {
     }
   };
   const handleSubmit = (e) => {
+    // axios
+    //   .post("http://127.0.0.1:5000/react/signup", {
+    //     firstname: firstname,
+    //     lastname: lastname,
+    //     email: email,
+    //     password: password,
+    //   })
+    //   .then((res) => {
+    //     // const token = res.data;
+    //     // this.props.setToken(token);
+    //     // this.setState({loggedIn: true});
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     axios
-      .post("http://127.0.0.1:5000/react/signup", {
-        firstname: firstname,
-        lastname: lastname,
+      .post("http://127.0.0.1:8081/api/register", {
+        name: firstname + " " + lastname,
         email: email,
         password: password,
-      }) /*.then(res => {
-        const token = res.data;
-        this.props.setToken(token);
-        this.setState({loggedIn: true});
-    })*/
+      })
+      .then((res) => {
+        // const token = res.data;
+        // this.props.setToken(token);
+        // this.setState({loggedIn: true});
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -60,7 +77,7 @@ export default function Signup() {
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div
         style={{
           width: "100%",
@@ -100,7 +117,7 @@ export default function Signup() {
               ></input>
             </div>
           </div>
-          <div style={{width: "20px"}}></div>
+          <div style={{ width: "20px" }}></div>
           <div className="signup-block">
             <span className="signup-content-title">Last Name</span>
             <div
@@ -141,8 +158,8 @@ export default function Signup() {
               passwordError !== ""
                 ? "signup-input-block-onerror"
                 : typing === "password"
-                  ? "signup-input-block-ontyping"
-                  : "signup-input-block"
+                ? "signup-input-block-ontyping"
+                : "signup-input-block"
             }
             onClick={() => setTyping("password")}
           >
@@ -159,8 +176,8 @@ export default function Signup() {
               confirmPasswordError !== ""
                 ? "signup-input-block-onerror"
                 : typing === "confirmPassword"
-                  ? "signup-input-block-ontyping"
-                  : "signup-input-block"
+                ? "signup-input-block-ontyping"
+                : "signup-input-block"
             }
             onClick={() => setTyping("confirmPassword")}
           >

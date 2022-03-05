@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./SearchResult.css";
 import axios from "axios";
 import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
@@ -7,53 +7,55 @@ import restaurant from "../../../img/restaurant.png";
 
 export default function RestaurantResults() {
   const navigate = useNavigate();
-  const data = [
-    {
-      restaurant: "macdonald",
-      zip: "32608",
-    },
-    {
-      restaurant: "kfc",
-      zip: "32608",
-    },
-    {
-      restaurant: "tacobell",
-      zip: "32608",
-    },
-    {
-      restaurant: "popeyes",
-      zip: "32608",
-    },
-    {
-      restaurant: "xxx",
-      zip: "32608",
-    },
-  ];
+  const params = useParams();
+  const [resData, setResData] = useState([]);
   var rows = [];
+  useEffect(() => {
+    axios
+      .post("http://127.0.0.1:5000/react/search_result", {
+        zipcode: params.address,
+      })
+      .then((res) => {
+        const temp = res.data.data;
+        setResData(temp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  // console.log(1);
+  // let resData = [
+  //   {
+  //     restaurant: "macdonald",
+  //     zip: "32608",
+  //   },
+  //   {
+  //     restaurant: "kfc",
+  //     zip: "32608",
+  //   },
+  //   {
+  //     restaurant: "tacobell",
+  //     zip: "32608",
+  //   },
+  //   {
+  //     restaurant: "popeyes",
+  //     zip: "32608",
+  //   },
+  //   {
+  //     restaurant: "xxx",
+  //     zip: "32608",
+  //   },
+  // ];
+
   // navigate(`/restaurant_menu/${data[i].restaurant}`)
-  for (let i = 0; i < data.length; i += 4) {
+  for (let i = 0; i < resData.length; i += 4) {
     rows.push(
       <div className="restaurant-results-block">
-        {i < data.length && (
-          <div
-            className="restaurant-results-block-content"
-            onClick={() => navigate(`/restaurant_menu/${data[i].restaurant}`)}
-          >
-            <img
-              className="restaurant-results-image"
-              src={restaurant}
-              alt="restaurant"
-            ></img>
-            <span className="restaurant-results-name">
-              {data[i].restaurant}
-            </span>
-          </div>
-        )}
-        {i + 1 < data.length && (
+        {i < resData.length && (
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${data[i + 1].restaurant}`)
+              navigate(`/restaurant_menu/${resData[i].restaurant}`)
             }
           >
             <img
@@ -62,15 +64,15 @@ export default function RestaurantResults() {
               alt="restaurant"
             ></img>
             <span className="restaurant-results-name">
-              {data[i + 1].restaurant}
+              {resData[i].restaurant}
             </span>
           </div>
         )}
-        {i + 2 < data.length && (
+        {i + 1 < resData.length && (
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${data[i + 2].restaurant}`)
+              navigate(`/restaurant_menu/${resData[i + 1].restaurant}`)
             }
           >
             <img
@@ -79,15 +81,15 @@ export default function RestaurantResults() {
               alt="restaurant"
             ></img>
             <span className="restaurant-results-name">
-              {data[i + 2].restaurant}
+              {resData[i + 1].restaurant}
             </span>
           </div>
         )}
-        {i + 3 < data.length && (
+        {i + 2 < resData.length && (
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${data[i + 3].restaurant}`)
+              navigate(`/restaurant_menu/${resData[i + 2].restaurant}`)
             }
           >
             <img
@@ -96,7 +98,24 @@ export default function RestaurantResults() {
               alt="restaurant"
             ></img>
             <span className="restaurant-results-name">
-              {data[i + 3].restaurant}
+              {resData[i + 2].restaurant}
+            </span>
+          </div>
+        )}
+        {i + 3 < resData.length && (
+          <div
+            className="restaurant-results-block-content"
+            onClick={() =>
+              navigate(`/restaurant_menu/${resData[i + 3].restaurant}`)
+            }
+          >
+            <img
+              className="restaurant-results-image"
+              src={restaurant}
+              alt="restaurant"
+            ></img>
+            <span className="restaurant-results-name">
+              {resData[i + 3].restaurant}
             </span>
           </div>
         )}
@@ -104,10 +123,9 @@ export default function RestaurantResults() {
     );
   }
 
-  const params = useParams();
   return (
     <div className="restaurant-results">
-      <AuthedNavBar/>
+      <AuthedNavBar />
       <div
         style={{
           width: "100%",

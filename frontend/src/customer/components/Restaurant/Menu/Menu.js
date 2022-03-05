@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Menu.css";
 import axios from "axios";
 import AuthedNavBar from "../../NavBar/AuthedNavBar";
@@ -9,36 +9,51 @@ import restaurant from "../../../../img/restaurant.png";
 export default function RestaurantMenu() {
   const navigate = useNavigate();
   const [mouse, setMouse] = useState("");
-  const data = [
-    {
-      name: "burger",
-      price: 2.99,
-    },
-    {
-      name: "fries",
-      price: 1.99,
-    },
-    {
-      name: "chicken tenders",
-      price: 3.99,
-    },
-    {
-      name: "soft drink",
-      price: 1.59,
-    },
-    {
-      name: "ice cream",
-      price: 0.99,
-    },
-    {
-      name: "hot wings",
-      price: 7.99,
-    },
-    {
-      name: "salmon sushi",
-      price: 6.99,
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .post("http://127.0.0.1:5000/react/menu", {
+        zipcode: params.address,
+      })
+      .then((res) => {
+        const temp = res.data.data;
+        setData(temp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  // const data = [
+  //   {
+  //     name: "burger",
+  //     price: 2.99,
+  //   },
+  //   {
+  //     name: "fries",
+  //     price: 1.99,
+  //   },
+  //   {
+  //     name: "chicken tenders",
+  //     price: 3.99,
+  //   },
+  //   {
+  //     name: "soft drink",
+  //     price: 1.59,
+  //   },
+  //   {
+  //     name: "ice cream",
+  //     price: 0.99,
+  //   },
+  //   {
+  //     name: "hot wings",
+  //     price: 7.99,
+  //   },
+  //   {
+  //     name: "salmon sushi",
+  //     price: 6.99,
+  //   },
+  // ];
   var rows = [];
   for (let i = 0; i < data.length; i += 3) {
     rows.push(
@@ -123,7 +138,7 @@ export default function RestaurantMenu() {
   const params = useParams();
   return (
     <div className="restaurant-menu">
-      <AuthedNavBar/>
+      <AuthedNavBar />
       <div
         style={{
           width: "100%",
