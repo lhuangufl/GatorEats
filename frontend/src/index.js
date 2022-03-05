@@ -11,7 +11,7 @@ import RestaurantResults from "./customer/sceens/SearchResult/SearchResult";
 import RestaurantMenu from "./customer/components/Restaurant/Menu/Menu";
 import Home from "./customer/sceens/Homepage/Home";
 import Orders from "./customer/sceens/Orders";
-import Profile from "./customer/sceens/Profile";
+import Profile from "./customer/sceens/Profile/Profile";
 // import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Restaurant from "./customer/sceens/Restaurant";
