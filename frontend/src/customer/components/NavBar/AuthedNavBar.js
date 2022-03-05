@@ -1,58 +1,47 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import "./AuthedNavBar.css";
+import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 export default function AuthedNavBar() {
   const thisWidth = window.innerWidth;
   const [mouse, setMouse] = useState("");
   const navigate = useNavigate();
   return (
-    <div className="navbar">
-      <div className="navbar-title" onClick={() => navigate("/home")}>
-        <span>GatorEats</span>
-      </div>
-      <div style={{width: thisWidth * 0.6}}></div>
-      <div
-        className={
-          mouse === "home" ? "navbar-signup-onmouse" : "navbar-signup"
-        }
-        onMouseEnter={() => setMouse("signup")}
-        onMouseLeave={() => setMouse("")}
-        onClick={() => navigate("/home")}
-      >
-        <span>Home</span>
-      </div>
-      <div
-        className={
-          mouse === "restaurant" ? "navbar-signup-onmouse" : "navbar-signup"
-        }
-        onMouseEnter={() => setMouse("restaurant")}
-        onMouseLeave={() => setMouse("")}
-        onClick={() => navigate("/restaurant")}
-      >
-        <span>Restaurant</span>
-      </div>
-      <div
-        className={
-          mouse === "orders" ? "navbar-signin-onmouse" : "navbar-signin"
-        }
-        onMouseEnter={() => setMouse("orders")}
-        onMouseLeave={() => setMouse("")}
-        onClick={() => navigate("/orders")}
-      >
-        <span>Orders</span>
-      </div>
-      <div
-        className={
-          mouse === "account" ? "navbar-signup-onmouse" : "navbar-signup"
-        }
-        onMouseEnter={() => setMouse("signup")}
-        onMouseLeave={() => setMouse("")}
-        onClick={() => navigate("/account")}
-      >
-        <span>Account</span>
-      </div>
-    </div>
+    <Navbar bg="light" expand="lg">
+      <Container fluid>
+        <Navbar.Brand href="/home">
+          <span className="navbar-title">GatorEats</span>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Collapse className="nav navbar-nav navbar-right" id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{maxHeight: '100px'}}
+            navbarScroll
+          >
+            <Nav.Link href="/restaurant">Restaurant</Nav.Link>
+            <Nav.Link href="/orders">Orders</Nav.Link>
+            <Nav.Link href="/cart">Shopping Cart</Nav.Link>
+            <NavDropdown title="Account" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+              <NavDropdown.Divider/>
+              <NavDropdown.Item href="/payment">Payment</NavDropdown.Item>
+              <NavDropdown.Divider/>
+              <NavDropdown.Item href="/">Logout</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Form className="d-flex">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success" href="/restaurant_results/:address">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
