@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Orders.css";
-import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
+import AuthedNavBar from "../components/NavBar/AuthedNavBar";
+
+const McDonaldURL = "https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
 
 export default function Orders() {
   const navigate = useNavigate();
@@ -9,14 +10,7 @@ export default function Orders() {
   return (<div className="App">
     <AuthedNavBar/>
     <div className="home">
-      <header className="bg-dark py-5">
-        <div className="container px-4 px-lg-5 my-5">
-          <div className="text-center text-white">
-            <h1 className="display-4 fw-bolder"> Reactjs shop in style</h1>
-            <p className="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-          </div>
-        </div>
-      </header>
+
 
       <section className="py-5">
         <div className="container px-4 px-lg-5 mt-5">
@@ -25,19 +19,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
@@ -46,19 +41,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
@@ -67,19 +63,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
@@ -88,19 +85,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
@@ -109,19 +107,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
@@ -130,19 +129,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
@@ -151,19 +151,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
@@ -172,19 +173,20 @@ export default function Orders() {
               <div className="card h-100">
 
                 <img className="card-img-top"
-                     src="https://therichpost.com/wp-content/uploads/2021/05/dummyimage400x300.jpg" alt="..."/>
+                     src="https://yt3.ggpht.com/ytc/AKedOLS5rTsrjzAgo0yJdrdHBSdEskUL4JsSwCvDCfcKdw=s900-c-k-c0x00ffffff-no-rj"
+                     alt="..."/>
 
                 <div className="card-body p-4">
                   <div className="text-center">
 
-                    <Link to={'/singleitem'}><h5 className="fw-bolder">Fancy Product</h5></Link>
+                    <Link to={'/singleitem'}><h5 className="fw-bolder">McDonald</h5></Link>
 
-                    $40.00 - $80.00
+                    $12.35
                   </div>
                 </div>
 
                 <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a>
+                  <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View details</a>
                   </div>
                 </div>
               </div>
