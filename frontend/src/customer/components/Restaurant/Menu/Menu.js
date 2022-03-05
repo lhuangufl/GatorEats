@@ -11,10 +11,13 @@ export default function RestaurantMenu() {
   const [mouse, setMouse] = useState("");
   const [data, setData] = useState([]);
 
+  const [value, setValue] = useState("");
+  const [count, setCount] = useState(-1);
   useEffect(() => {
+    setCount(count + 1);
     axios
       .post("http://127.0.0.1:5000/react/menu", {
-        zipcode: params.address,
+        restaurant: params.restaurant,
       })
       .then((res) => {
         const temp = res.data.data;
@@ -23,7 +26,9 @@ export default function RestaurantMenu() {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, [value]);
+  const onChange = ({ target }) => setValue(target.value);
+
   // const data = [
   //   {
   //     name: "burger",
