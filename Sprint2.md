@@ -24,26 +24,30 @@
 - Add integration for restuarant, search, merchant homepage, item and menu.
 - Setup Cypress Unit test system.
 - Add unit test to authentication, search functionality and restaurant component.
+- Integrated signin and signup page with backend api.
 
 ### Demo
-Phase 2 Demo: 
+
+Phase 2 Demo:
 [![Spring 2 Frontend Demo](https://img.youtube.com/vi/MIfhSSaTvnI/maxresdefault.jpg)](https://youtu.be/MIfhSSaTvnI)
 
 ### Frontend routes
+
 #### `/`: home page before authentication
+
 <img width="1260" alt="Screen Shot 2022-03-04 at 11 12 23 PM" src="https://user-images.githubusercontent.com/97488243/156867391-bb2a1fd3-2232-4a84-8604-51e98f7769ee.png">
 
 #### `/signup`: register
+
 <img width="1254" alt="Screen Shot 2022-03-04 at 11 12 38 PM" src="https://user-images.githubusercontent.com/97488243/156867433-4a247118-3c1f-466c-8c53-e8a9e8b54676.png">
 
-
 #### `/signin`: login
+
 <img width="1257" alt="Screen Shot 2022-03-04 at 11 12 45 PM" src="https://user-images.githubusercontent.com/97488243/156867421-72cc7b73-90d8-42d3-87ca-716ad10fe9b0.png">
 
 #### `/home`: home page after authentication
 
 <img width="1256" alt="Screen Shot 2022-03-04 at 11 13 00 PM" src="https://user-images.githubusercontent.com/97488243/156867437-cb09cebb-bed7-45d1-97a0-a7bd626c0cbf.png">
-
 
 #### `/restaurant`: restaurant list page
 
@@ -72,5 +76,12 @@ Phase 2 Demo:
 #### `/payment`: payment method page
 
 <img width="1365" alt="Screen Shot 2022-03-04 at 11 17 22 PM" src="https://user-images.githubusercontent.com/97488243/156867574-25ed54b4-1b0b-483e-9a8f-42fe6ecaed7f.png">
+
+#### Integration
+<img width="569" alt="Screen Shot 2022-03-04 at 23 53 57" src="https://user-images.githubusercontent.com/60279540/156868545-34b53de8-69c7-4e99-8f42-dfff41581ed8.png">
+
+#### cypress test
+<img width="1438" alt="Screen Shot 2022-03-04 at 23 54 47" src="https://user-images.githubusercontent.com/60279540/156868571-a86274c2-73c7-4771-8efe-fab7c9ba8373.png">
+
 
 ## Backend
