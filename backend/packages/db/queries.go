@@ -11,4 +11,5 @@ const (
 	CreateRestaurant                = `INSERT INTO restaurants(owneremail, password, name, phone, zipcode) VALUES ($1 , $2, $3, $4, $5)`
 	GetAllRestaurantsQuery          = `SELECT owneremail, name, phone, zipcode FROM restaurants`
 	GetAllRestaurantsQueryByZipCode = `SELECT owneremail, name, phone, zipcode FROM restaurants WHERE zipcode = $1`
+	AddMenuItem                     = `INSERT INTO menuitem(ownerid, price, itemname) VALUES ($1, $2, $3)`
 )
