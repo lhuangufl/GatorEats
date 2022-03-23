@@ -17,13 +17,13 @@ This project will use Golang for banckend and React.js for frontend.
 
 ## Postgresql Credentials
 
-*Host: ec2-52-206-193-199.compute-1.amazonaws.com
-*Database: db63l3ukuv77j8
-*User: fqhmuqxpozwlin
-*Port: 5432
-*Password: fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315
-*URI: postgres://fqhmuqxpozwlin:fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315@ec2-52-206-193-199.compute-1.amazonaws.com:5432/db63l3ukuv77j8
-*Heroku CLI:heroku pg:psql postgresql-round-19031 --app gator-eats
+	* Host: ec2-52-206-193-199.compute-1.amazonaws.com
+	* Database: db63l3ukuv77j8
+	* User: fqhmuqxpozwlin
+	* Port: 5432
+	* Password: fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315
+	* URI: postgres://fqhmuqxpozwlin:fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315@ec2-52-206-193-199.compute-	1.amazonaws.com:5432/db63l3ukuv77j8
+	* Heroku CLI:heroku pg:psql postgresql-round-19031 --app gator-eats
 
 Server is live on localhost:8081
 
