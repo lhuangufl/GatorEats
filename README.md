@@ -6,13 +6,13 @@ This project will use Golang for banckend and React.js for frontend.
 
 ## Team Member:
 
-    Lin Huang,
+    Lin Huang (backend),
 
-    Guanglong Zhang,
+    Guanglong Zhang (backend),
 
-    Tinghui Zhang,
+    Tinghui Zhang (frontend),
 
-    Hongru Chu,
+    Hongru Chu (frontend),
 
 
 ## Postgresql Credentials
