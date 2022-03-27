@@ -82,6 +82,10 @@ CREATE TABLE IF NOT EXISTS gatorOrder
 | /api/register                 | POST   | { email String, password String, name String } | register new user                   |
 | /api/restaurantbyzipcode      | GET    | {"owneremail", "name","zipcode"，"phone":}        | display List of Restaurant near a zip   |
 | /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone":} | Register New Restaurant             |
+| /api/order                    | POST   | {"orderId":1,"ownerId":1,"totalPrice":1}       | Create order |
+| /api/order                    | PUT    | {"orderId":1,"ownerId":1,"totalPrice":1}       | Update order |
+| /api/order                    | DELETE | {"orderId":1,"ownerId":1}                      | Delete order |
+| /api/order                    | GET    |                                                | List orders  |
 
 
 ## Example of Endpoints uses
