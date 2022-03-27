@@ -12,4 +12,9 @@ const (
 	GetAllRestaurantsQuery          = `SELECT owneremail, name, phone, zipcode FROM restaurants`
 	GetAllRestaurantsQueryByZipCode = `SELECT owneremail, name, phone, zipcode FROM restaurants WHERE zipcode = $1`
 	AddMenuItem                     = `INSERT INTO menuitem(ownerid, price, itemname) VALUES ($1, $2, $3)`
+
+	CreateOrder = `INSERT INTO gatororder(orderid, ownerid, totalprice) VALUES ($1, $2, $3)`
+	UpdateOrder = `UPDATE gatororder SET totalprice = $1 WHERE orderid = $2 AND ownerid = $3`
+	DeleteOrder = `DELETE FROM gatororder WHERE orderid = $1 AND ownerid = $2`
+	ListOrder   = `SELECT * FROM gatororder`
 )

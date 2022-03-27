@@ -6,24 +6,24 @@ This project will use Golang for banckend and React.js for frontend.
 
 ## Team Member:
 
-    Lin Huang,
+    Lin Huang (backend),
 
-    Guanglong Zhang,
+    Guanglong Zhang (backend),
 
-    Tinghui Zhang,
+    Tinghui Zhang (frontend),
 
-    Hongru Chu,
+    Hongru Chu (frontend),
 
 
 ## Postgresql Credentials
 
-*Host: ec2-52-206-193-199.compute-1.amazonaws.com
-*Database: db63l3ukuv77j8
-*User: fqhmuqxpozwlin
-*Port: 5432
-*Password: fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315
-*URI: postgres://fqhmuqxpozwlin:fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315@ec2-52-206-193-199.compute-1.amazonaws.com:5432/db63l3ukuv77j8
-*Heroku CLI:heroku pg:psql postgresql-round-19031 --app gator-eats
+	* Host: ec2-52-206-193-199.compute-1.amazonaws.com
+	* Database: db63l3ukuv77j8
+	* User: fqhmuqxpozwlin
+	* Port: 5432
+	* Password: fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315
+	* URI: postgres://fqhmuqxpozwlin:fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315@ec2-52-206-193-199.compute-	1.amazonaws.com:5432/db63l3ukuv77j8
+	* Heroku CLI:heroku pg:psql postgresql-round-19031 --app gator-eats
 
 Server is live on localhost:8081
 
@@ -82,6 +82,10 @@ CREATE TABLE IF NOT EXISTS gatorOrder
 | /api/register                 | POST   | { email String, password String, name String } | register new user                   |
 | /api/restaurantbyzipcode      | GET    | {"owneremail", "name","zipcode"，"phone":}        | display List of Restaurant near a zip   |
 | /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone":} | Register New Restaurant             |
+| /api/order                    | POST   | {"orderId":1,"ownerId":1,"totalPrice":1}       | Create order |
+| /api/order                    | PUT    | {"orderId":1,"ownerId":1,"totalPrice":1}       | Update order |
+| /api/order                    | DELETE | {"orderId":1,"ownerId":1}                      | Delete order |
+| /api/order                    | GET    |                                                | List orders  |
 
 
 ## Example of Endpoints uses
