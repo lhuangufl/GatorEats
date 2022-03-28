@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Cleave from 'cleave.js/react';
-import './Payment.css'
+import Cleave from "cleave.js/react";
+import "./Payment.css";
 import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
 
 const imageUrls = [
@@ -9,22 +9,24 @@ const imageUrls = [
   "https://www.discover.com/company/images/newsroom/media-downloads/discover.png",
   "https://s1.q4cdn.com/692158879/files/design/svg/american-express-logo.svg",
   "https://cdn4.iconfinder.com/data/icons/simple-peyment-methods/512/diners_club-512.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JCB_logo.svg/1280px-JCB_logo.svg.png"
-]
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JCB_logo.svg/1280px-JCB_logo.svg.png",
+];
 
 export default function Payment() {
-  const [creditCardNum, setCreditCardNum] = useState('#### #### #### ####');
-  const [cardType, setCardType] = useState('')
-  const [cardHolder, setCardHolder] = useState('Your Full Name');
-  const [expireMonth, setExpireMonth] = useState('MM');
-  const [expireYear, setExpireYear] = useState('YYYY');
-  const [cardTypeUrl, setCardTypeUrl] = useState('https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png');
+  const [creditCardNum, setCreditCardNum] = useState("#### #### #### ####");
+  const [cardType, setCardType] = useState("");
+  const [cardHolder, setCardHolder] = useState("Your Full Name");
+  const [expireMonth, setExpireMonth] = useState("MM");
+  const [expireYear, setExpireYear] = useState("YYYY");
+  const [cardTypeUrl, setCardTypeUrl] = useState(
+    "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png"
+  );
   // const [flip, setFlip] = useState(null);
 
   const handleNum = (e) => {
     setCreditCardNum(e.target.rawValue);
     // console.log(e.target.value);
-  }
+  };
 
   const handleType = (type) => {
     setCardType(type);
@@ -32,46 +34,53 @@ export default function Payment() {
 
     if (type === "visa") {
       setCardTypeUrl(imageUrls[0]);
-      console.log("Visa")
+      console.log("Visa");
     } else if (type === "mastercard") {
       setCardTypeUrl(imageUrls[1]);
-      console.log("Mastercard")
+      console.log("Mastercard");
     } else if (type === "discover") {
       setCardTypeUrl(imageUrls[2]);
-      console.log("Discover")
+      console.log("Discover");
     } else if (type === "amex") {
       setCardTypeUrl(imageUrls[3]);
-      console.log("Amex")
+      console.log("Amex");
     } else if (type === "diners") {
-      console.log("Diners")
-      setCardTypeUrl(imageUrls[4])
+      console.log("Diners");
+      setCardTypeUrl(imageUrls[4]);
     } else if (type === "jcb") {
       console.log("JCB");
       setCardTypeUrl(imageUrls[5]);
     }
-  }
+  };
 
   const handleCardHolder = (e) => {
     setCardHolder(e.target.value);
-  }
+  };
 
   const handleExpMonth = (e) => {
     setExpireMonth(e.target.value);
-  }
+  };
 
   const handleExpYear = (e) => {
     setExpireYear(e.target.value);
-  }
+  };
   return (
     <div>
-      <AuthedNavBar/>
+      <AuthedNavBar />
+      <div
+        style={{
+          width: "100%",
+          height: "0.1px",
+          backgroundColor: "rgb(0, 0, 0, 10%)",
+        }}
+      ></div>
       <div className="payment-container">
         <form id="form">
           <div id="card">
             <div className="header">
               <div className="sticker"></div>
               <div>
-                <img className="logo" src={cardTypeUrl} alt="Card logo"/>
+                <img className="logo" src={cardTypeUrl} alt="Card logo" />
               </div>
             </div>
             <div className="body">
@@ -84,7 +93,9 @@ export default function Payment() {
               </div>
               <div>
                 <h5>Expires</h5>
-                <h3>{expireMonth} / {expireYear}</h3>
+                <h3>
+                  {expireMonth} / {expireYear}
+                </h3>
               </div>
             </div>
           </div>
@@ -95,7 +106,7 @@ export default function Payment() {
               delimiter="-"
               options={{
                 creditCard: true,
-                onCreditCardTypeChanged: handleType
+                onCreditCardTypeChanged: handleType,
               }}
               onChange={handleNum}
               placeholder="Please enter your credit card number"
@@ -104,7 +115,12 @@ export default function Payment() {
 
           <div className="input-container">
             <h4>Card Holder</h4>
-            <input onChange={handleCardHolder} type="text" placeholder="Please enter your full name" required/>
+            <input
+              onChange={handleCardHolder}
+              type="text"
+              placeholder="Please enter your full name"
+              required
+            />
           </div>
 
           <div className="input-grp">
@@ -141,7 +157,7 @@ export default function Payment() {
             </div>
             <div className="input-container">
               <h4>CVV</h4>
-              <input type="password" placeholder="CVV" required/>
+              <input type="password" placeholder="CVV" required />
             </div>
           </div>
 
