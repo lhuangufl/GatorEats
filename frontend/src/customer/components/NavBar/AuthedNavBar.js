@@ -1,23 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import "./AuthedNavBar.css";
+import {
+  Button,
+  Container,
+  Form,
+  FormControl,
+  Nav,
+  Navbar,
+  NavDropdown,
+} from "react-bootstrap";
 
 export default function AuthedNavBar() {
   const thisWidth = window.innerWidth;
   const [mouse, setMouse] = useState("");
   const navigate = useNavigate();
+
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="transparent" expand="lg">
       <Container fluid>
         <Navbar.Brand href="/home">
-          <span className="navbar-title">GatorEats</span>
+          <span className="authed-navbar-title">GatorEats</span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse className="nav navbar-nav navbar-right" id="navbarScroll">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse
+          className="nav navbar-nav navbar-right"
+          id="navbarScroll"
+        >
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{maxHeight: '100px'}}
+            style={{ maxHeight: "100px" }}
             navbarScroll
           >
             <Nav.Link href="/restaurant">Restaurant</Nav.Link>
@@ -25,9 +37,9 @@ export default function AuthedNavBar() {
             <Nav.Link href="/cart">Shopping Cart</Nav.Link>
             <NavDropdown title="Account" id="basic-nav-dropdown">
               <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-              <NavDropdown.Divider/>
+              <NavDropdown.Divider />
               <NavDropdown.Item href="/payment">Payment</NavDropdown.Item>
-              <NavDropdown.Divider/>
+              <NavDropdown.Divider />
               <NavDropdown.Item href="/">Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
@@ -38,7 +50,13 @@ export default function AuthedNavBar() {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success" href="/restaurant_results/:address">Search</Button>
+            <Button
+              variant="outline-success"
+              href="/restaurant_results/:address"
+              style={{ marginRight: 100 }}
+            >
+              Search
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>

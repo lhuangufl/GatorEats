@@ -1,4 +1,4 @@
-.navbar {
+.authed-navbar {
   user-select: none;
   height: 70px;
   /* background-color: red; */
@@ -7,28 +7,28 @@
   justify-content: flex-start;
   flex-direction: row;
 }
-.navbar-title {
+.authed-navbar-title {
   margin-left: 70px;
   font-size: 30px;
   font-weight: bold;
   color: black;
   /* color: rgb(38, 159, 230); */
 }
-.navbar-signup {
+.authed-navbar-signup {
   margin-left: 30px;
   font-size: 24px;
   font-weight: bold;
   color: black;
   /* color: rgb(38, 159, 230); */
 }
-.navbar-signup-onmouse {
+.authed-navbar-signup-onmouse {
   margin-left: 30px;
   font-size: 24px;
   font-weight: bold;
   color: rgb(0, 0, 0, 75%);
   /* color: rgb(38, 159, 230); */
 }
-.navbar-signin {
+.authed-navbar-signin {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +42,7 @@
   width: 110px;
   /* color: rgb(38, 159, 230); */
 }
-.navbar-signin-onmouse {
+.authed-navbar-signin-onmouse {
   display: flex;
   align-items: center;
   justify-content: center;
