@@ -12,7 +12,6 @@ import (
 
 func TestMain(m *testing.M) {
 	config.InitConfig()
-	go StartServer()
 	m.Run()
 }
 
@@ -53,7 +52,7 @@ func TestRestaurantByZipCode(t *testing.T) {
 
 func TestCreateRestaurant(t *testing.T) {
 	url := fmt.Sprintf("http://127.0.0.1:%s/restaurant", config.Config[config.SERVER_PORT])
-	json, _ := json.Marshal(db.Restaurant{Owneremail, Password: "000000", Name: "Pizza Hub", Rtype: "type", Phone: "1", ZipCode: 11111})
+	json, _ := json.Marshal(db.Restaurant{Owneremail: "", Password: "000000", Name: "Pizza Hub", Phone: "1", Zipcode: "11111"})
 	r := bytes.NewReader(json)
 	resp, err := http.Post(url, "application/json", r)
 	if err != nil {

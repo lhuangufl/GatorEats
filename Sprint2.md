@@ -77,4 +77,11 @@ Phase 2 Demo:
 
 <img width="1365" alt="Screen Shot 2022-03-04 at 11 17 22 PM" src="https://user-images.githubusercontent.com/97488243/156867574-25ed54b4-1b0b-483e-9a8f-42fe6ecaed7f.png">
 
+#### Integration
+<img width="569" alt="Screen Shot 2022-03-04 at 23 53 57" src="https://user-images.githubusercontent.com/60279540/156868545-34b53de8-69c7-4e99-8f42-dfff41581ed8.png">
+
+#### cypress test
+<img width="1438" alt="Screen Shot 2022-03-04 at 23 54 47" src="https://user-images.githubusercontent.com/60279540/156868571-a86274c2-73c7-4771-8efe-fab7c9ba8373.png">
+
+
 ## Backend

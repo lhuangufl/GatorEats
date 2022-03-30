@@ -151,6 +151,21 @@ func CreateRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
 	return c.JSON(&fiber.Map{"success": true})
 }
 
+func AddMenu(c *fiber.Ctx, dbConn *sql.DB) error {
+	print("POST Request : Adding a food menu item\n")
+	r := new(db.FoodMenu)
+
+	if err := c.BodyParser(r); err != nil {
+		return err
+	}
+
+	_, err := dbConn.Query(db.AddMenuItem, r.RID, r.Price, r.Name) //RID = Restaurant ID
+	if err != nil {
+		return err
+	}
+	return c.JSON(&fiber.Map{"success": true})
+}
+
 func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
 	print("GET Request : Searching for restaurant\n")
 	zipCodeStr := c.Query("ZipCode")
