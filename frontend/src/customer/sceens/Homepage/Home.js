@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
 import homeBackground from "./images/homeBackground.svg";
 import location from "./images/location.svg";
@@ -12,8 +12,23 @@ export default function Home() {
   const thisHeight = window.innerHeight;
   const [mouse, setMouse] = useState("");
   const [address, setAddress] = useState("");
-  //   const [signin, setSignin] = useState(false);
+
   const navigate = useNavigate();
+
+  const [token, setToken] = useState("");
+  const [value, setValue] = useState("");
+  const [count, setCount] = useState(-1);
+  useEffect(() => {
+    setCount(count + 1);
+    setToken(window.localStorage.getItem("token"));
+    if (window.localStorage.getItem("token") === null) {
+      navigate("/");
+    }
+  }, [value]);
+  const onChange = ({ target }) => setValue(target.value);
+
+  //   const [signin, setSignin] = useState(false);
+
   return (
     <div className="home">
       {/* <img
@@ -29,7 +44,7 @@ export default function Home() {
           backgroundImage: `url(${homeBackground})`,
         }}
       >
-        <AuthedNavBar/>
+        <AuthedNavBar />
         <div className="home-title">
           <span>Search foods near to you</span>
         </div>
@@ -38,7 +53,7 @@ export default function Home() {
             <img
               src={location}
               alt="location"
-              style={{height: "30px", marginLeft: "10px"}}
+              style={{ height: "30px", marginLeft: "10px" }}
             ></img>
             <input
               className="home-input"
@@ -53,8 +68,8 @@ export default function Home() {
               address === ""
                 ? "home-submit-disable"
                 : mouse === "submit"
-                  ? "home-submit-onmouse"
-                  : "home-submit-enable"
+                ? "home-submit-onmouse"
+                : "home-submit-enable"
             }
             onMouseEnter={() => setMouse("submit")}
             onMouseLeave={() => setMouse("")}

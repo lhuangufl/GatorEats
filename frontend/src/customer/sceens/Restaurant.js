@@ -105,7 +105,7 @@ export default function Restaurant() {
   const params = useParams();
   return (
     <div>
-      <AuthedNavBar/>
+      <AuthedNavBar />
       <div
         style={{
           width: "100%",
@@ -114,15 +114,22 @@ export default function Restaurant() {
         }}
       ></div>
       <div className="restaurant-results-title">
-        <span className="restaurant-results-title-content">
-        </span>
+        <span className="restaurant-results-title-content"></span>
       </div>
       {/* <div className="restaurant-results-block">
         <div className="restaurant-results-block-content"></div>
         <div className="restaurant-results-block-content"></div>
         <div className="restaurant-results-block-content"></div>
       </div> */}
-      {rows}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        {rows}
+      </div>
     </div>
   );
 }

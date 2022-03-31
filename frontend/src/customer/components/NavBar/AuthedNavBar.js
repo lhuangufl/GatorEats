@@ -15,6 +15,7 @@ export default function AuthedNavBar() {
   const thisWidth = window.innerWidth;
   const [mouse, setMouse] = useState("");
   const navigate = useNavigate();
+  const [address, setAddress] = useState("");
 
   return (
     <Navbar bg="transparent" expand="lg">
@@ -40,7 +41,12 @@ export default function AuthedNavBar() {
               <NavDropdown.Divider />
               <NavDropdown.Item href="/payment">Payment</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Logout</NavDropdown.Item>
+              <NavDropdown.Item
+                href="/"
+                onClick={() => window.localStorage.removeItem("token")}
+              >
+                Logout
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form className="d-flex">
@@ -49,10 +55,11 @@ export default function AuthedNavBar() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setAddress(e.target.value)}
             />
             <Button
               variant="outline-success"
-              href="/restaurant_results/:address"
+              href={`/restaurant_results/${address}`}
               style={{ marginRight: 100 }}
             >
               Search
