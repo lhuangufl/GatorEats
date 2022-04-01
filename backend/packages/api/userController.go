@@ -247,6 +247,30 @@ func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
 	return c.Status(http.StatusOK).JSON(restaurants)
 }
 
+func MenuByOwnerID(c *fiber.Ctx, dbConn *sql.DB) error {
+	print("GET Request : Searching for menu\n")
+	ownerIDStr := c.Query("OwnerEmail")
+	print(ownerIDStr)
+	menuitems := []db.FoodMenu{}
+	rows, err := dbConn.Query(db.GetMenuByOwnerId, ownerIDStr)
+	if err != nil {
+		return c.Status(http.StatusUnauthorized).
+			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
+	}
+	defer rows.Close()
+	print(rows)
+	for rows.Next() {
+		var menuitem db.FoodMenu
+		err = rows.Scan(&menuitem.FID, &menuitem.RID, &menuitem.Name, &menuitem.Price, &menuitem.CreatedAt, &menuitem.UpdatedAt)
+		if err != nil {
+			return c.Status(http.StatusUnauthorized).
+				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
+		}
+		menuitems = append(menuitems, menuitem)
+	}
+	return c.Status(http.StatusOK).JSON(menuitems)
+}
+
 func Logout(c *fiber.Ctx) error {
 	c.ClearCookie()
 	return c.SendStatus(http.StatusOK)
