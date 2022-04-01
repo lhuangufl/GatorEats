@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
@@ -10,9 +10,21 @@ export default function Signin() {
   const thisHeight = window.innerHeight;
   const [typing, setTyping] = useState("");
   const [mouse, setMouse] = useState("");
-
+  const [errorMsg, setErrorMsg] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const [value, setValue] = useState("");
+  const [count, setCount] = useState(-1);
+  useEffect(() => {
+    setCount(count + 1);
+    if (window.localStorage.getItem("token") !== null) {
+      navigate("/home");
+    }
+  }, [value]);
+  const onChange = ({ target }) => setValue(target.value);
 
   const handleSubmit = (e) => {
     axios
@@ -26,15 +38,17 @@ export default function Signin() {
         // this.props.setToken(token);
         // this.setState({loggedIn: true});
         console.log(res);
+        window.localStorage.setItem("token", res.data.token);
+        setErrorMsg("");
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);
+        setErrorMsg("email or password incorrect!");
       });
     // TODO: Add auth
-    navigate("/home");
   };
 
-  const navigate = useNavigate();
   return (
     <div>
       <NavBar />
@@ -60,7 +74,7 @@ export default function Signin() {
             <span>Sign up</span>
           </div>
         </div>
-
+        <span className="signin-error">{errorMsg}</span>
         <div className="signin-block">
           <span className="signin-content-title">Email</span>
           <div
@@ -103,6 +117,7 @@ export default function Signin() {
           >
             <input
               id="password"
+              type="password"
               className="signup-input"
               onChange={(e) => setPassword(e.target.value)}
             ></input>

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./Menu.css";
 import axios from "axios";
 import AuthedNavBar from "../../NavBar/AuthedNavBar";
+import NavBar from "../../../components/NavBar/NavBar";
 import food from "../../../../img/food.png";
 import restaurant from "../../../../img/restaurant.png";
 
@@ -142,28 +143,34 @@ export default function RestaurantMenu() {
 
   const params = useParams();
   return (
-    <div className="restaurant-menu">
-      <AuthedNavBar />
-      <div
-        style={{
-          width: "100%",
-          height: "0.1px",
-          backgroundColor: "rgb(0, 0, 0, 10%)",
-        }}
-      ></div>
-      <div className="restaurant-menu-title">
-        <img
-          className="restaurant-menu-icon"
-          src={restaurant}
-          alt="restaurant"
-        ></img>
-        <span className="restaurant-menu-title-content">
-          {params.restaurant}
-        </span>
-      </div>
-      <div className="restaurant-menu-line"></div>
+    <div>
+      {window.localStorage.getItem("token") === null ? (
+        <NavBar />
+      ) : (
+        <AuthedNavBar />
+      )}
+      <div className="restaurant-menu">
+        <div
+          style={{
+            width: "100%",
+            height: "0.1px",
+            backgroundColor: "rgb(0, 0, 0, 10%)",
+          }}
+        ></div>
+        <div className="restaurant-menu-title">
+          <img
+            className="restaurant-menu-icon"
+            src={restaurant}
+            alt="restaurant"
+          ></img>
+          <span className="restaurant-menu-title-content">
+            {params.restaurant}
+          </span>
+        </div>
+        <div className="restaurant-menu-line"></div>
 
-      {rows}
+        {rows}
+      </div>
     </div>
   );
 }

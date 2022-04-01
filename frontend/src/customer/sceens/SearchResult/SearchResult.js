@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./SearchResult.css";
 import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import restaurant from "../../../img/restaurant.png";
 
 export default function RestaurantResults() {
@@ -27,7 +28,7 @@ export default function RestaurantResults() {
       });
   }, [value]);
   const onChange = ({ target }) => setValue(target.value);
-  // console.log(1);
+  console.log(1);
   // let resData = [
   //   {
   //     restaurant: "macdonald",
@@ -129,7 +130,11 @@ export default function RestaurantResults() {
 
   return (
     <div className="restaurant-results">
-      <AuthedNavBar />
+      {window.localStorage.getItem("token") === null ? (
+        <NavBar />
+      ) : (
+        <AuthedNavBar />
+      )}
       <div
         style={{
           width: "100%",
@@ -147,7 +152,15 @@ export default function RestaurantResults() {
         <div className="restaurant-results-block-content"></div>
         <div className="restaurant-results-block-content"></div>
       </div> */}
-      {rows}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        {rows}
+      </div>
     </div>
   );
 }

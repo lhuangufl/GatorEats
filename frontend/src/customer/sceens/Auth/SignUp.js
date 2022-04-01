@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import axios from "axios";
@@ -17,6 +17,16 @@ export default function Signup() {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
+  const navigate = useNavigate();
+  const [value, setValue] = useState("");
+  const [count, setCount] = useState(-1);
+  useEffect(() => {
+    setCount(count + 1);
+    if (window.localStorage.getItem("token") !== null) {
+      navigate("/home");
+    }
+  }, [value]);
+  const onChange = ({ target }) => setValue(target.value);
   const checkPassword = (e) => {
     if (e.target.value.length > 8) {
       if (e.target.value.match(/[a-z]+/) || e.target.value.match(/[A-Z]+/)) {
@@ -74,7 +84,6 @@ export default function Signup() {
       });
   };
 
-  const navigate = useNavigate();
   return (
     <div>
       <NavBar />
@@ -163,7 +172,11 @@ export default function Signup() {
             }
             onClick={() => setTyping("password")}
           >
-            <input className="signup-input" onChange={checkPassword}></input>
+            <input
+              className="signup-input"
+              onChange={checkPassword}
+              type="password"
+            ></input>
           </div>
           {passwordError !== "" && (
             <span className="signup-content-error">{passwordError}</span>
@@ -184,6 +197,7 @@ export default function Signup() {
             <input
               className="signup-input"
               onChange={checkConfirmPassword}
+              type="password"
             ></input>
           </div>
           {confirmPasswordError !== "" && (

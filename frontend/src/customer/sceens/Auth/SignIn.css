@@ -186,7 +186,6 @@
   font-weight: 400;
   color: gray;
   text-align: right;
-
 }
 .signin-forgotpassword-onmouse {
   margin-left: 150px;
@@ -197,4 +196,10 @@
   color: blue;
   text-align: right;
 }
-
+.signin-error {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+}
