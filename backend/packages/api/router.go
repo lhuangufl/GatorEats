@@ -26,7 +26,7 @@ func httpServer(db *sql.DB) *fiber.App {
 		AllowOrigins:     config.Config[config.CLIENT_URL],
 		AllowCredentials: true,
 		AllowHeaders:     "Content-Type, Content-Length, Accept-Encoding, Authorization, accept, origin",
-		AllowMethods:     "POST, OPTIONS, GET, PUT",
+		AllowMethods:     "POST, OPTIONS, GET, PUT， DELETE",
 		ExposeHeaders:    "Set-Cookie",
 	}))
 
@@ -34,12 +34,14 @@ func httpServer(db *sql.DB) *fiber.App {
 	api.Get("/ping", Pong)
 
 	api.Post("/login", WithDB(Login, db))
+	api.Post("/vendorlogin", WithDB(LoginAsRestaurant, db))
 	api.Post("/register", WithDB(CreateUser, db))
 	api.Get("/logout", Logout)
 	api.Post("/home", WithDB(Home, db))
 	api.Get("/restaurantsbyzipcode", WithDB(RestaurantByZipCode, db))
 	api.Post("/createrestaurant", WithDB(CreateRestaurant, db))
 	api.Post("/addfoodmenuitem", WithDB(AddMenu, db))
+	api.Get("/getfoodmenu", WithDB(MenuByOwnerID, db))
 
 	api.Post("/order", WithDB(CreateOrder, db))
 	api.Put("/order", WithDB(UpdateOrder, db))

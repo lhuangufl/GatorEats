@@ -18,6 +18,11 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
+type Claims2 struct {
+	db.Restaurant
+	jwt.StandardClaims
+}
+
 func Pong(c *fiber.Ctx) error {
 	return c.SendString("pong")
 }
@@ -115,6 +120,57 @@ func Login(c *fiber.Ctx, dbConn *sql.DB) error {
 	return c.JSON(&fiber.Map{"success": true, "user": claims.User, "token": tokenValue})
 }
 
+func LoginAsRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
+	print("LoginAsRestaurant \n")
+	loginUser := &db.Restaurant{}
+
+	if err := c.BodyParser(loginUser); err != nil {
+		return err
+	}
+
+	restaurant := &db.Restaurant{}
+	if err := dbConn.QueryRow(db.GetRestaurantByEmailQuery, loginUser.Owneremail).
+		Scan(&restaurant.Password); err != nil {
+		if err == sql.ErrNoRows {
+			return c.Status(http.StatusUnauthorized).JSON(fiber.Map{"success": false, "errors": []string{"No such user"}})
+		}
+	}
+	// print(restaurant.Password, loginUser.Password)
+	// match := utils.ComparePassword(restaurant.Password, loginUser.Password)
+	if loginUser.Password != restaurant.Password {
+		return c.Status(http.StatusUnauthorized).JSON(fiber.Map{"success": false, "errors": []string{"Incorrect credentials"}})
+	}
+
+	//expiration time of the token ->30 mins
+	expirationTime := time.Now().Add(30 * time.Minute)
+
+	restaurant.Password = ""
+	claims := &Claims2{
+		Restaurant: *restaurant,
+		StandardClaims: jwt.StandardClaims{
+			ExpiresAt: expirationTime.Unix(),
+		},
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	var jwtKey = []byte(config.Config[config.JWT_KEY])
+	tokenValue, err := token.SignedString(jwtKey)
+
+	if err != nil {
+		return err
+	}
+
+	c.Cookie(&fiber.Cookie{
+		Name:     "token",
+		Value:    tokenValue,
+		Expires:  expirationTime,
+		Domain:   config.Config[config.CLIENT_URL],
+		HTTPOnly: true,
+	})
+
+	return c.JSON(&fiber.Map{"success": true, "user": claims.Restaurant, "token": tokenValue})
+}
+
 func Home(c *fiber.Ctx, dbConn *sql.DB) error {
 	restaurants := []db.Restaurant{}
 	rows, err := dbConn.Query(db.GetAllRestaurantsQuery)
@@ -189,6 +245,30 @@ func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
 		restaurants = append(restaurants, restaurant)
 	}
 	return c.Status(http.StatusOK).JSON(restaurants)
+}
+
+func MenuByOwnerID(c *fiber.Ctx, dbConn *sql.DB) error {
+	print("GET Request : Searching for menu\n")
+	ownerIDStr := c.Query("OwnerEmail")
+	print(ownerIDStr)
+	menuitems := []db.FoodMenu{}
+	rows, err := dbConn.Query(db.GetMenuByOwnerId, ownerIDStr)
+	if err != nil {
+		return c.Status(http.StatusUnauthorized).
+			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
+	}
+	defer rows.Close()
+	print(rows)
+	for rows.Next() {
+		var menuitem db.FoodMenu
+		err = rows.Scan(&menuitem.FID, &menuitem.RID, &menuitem.Name, &menuitem.Price, &menuitem.CreatedAt, &menuitem.UpdatedAt)
+		if err != nil {
+			return c.Status(http.StatusUnauthorized).
+				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
+		}
+		menuitems = append(menuitems, menuitem)
+	}
+	return c.Status(http.StatusOK).JSON(menuitems)
 }
 
 func Logout(c *fiber.Ctx) error {
