@@ -53,6 +53,20 @@
 - Implemented various endpoints as listed below
 - Unit tests of various endpoints
 - Integration of backend and database
+
+
+#### Postgresql Credentials
+
+	* Host: ec2-52-206-193-199.compute-1.amazonaws.com
+	* Database: db63l3ukuv77j8
+	* User: fqhmuqxpozwlin
+	* Port: 5432
+	* Password: fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315
+	* URI: postgres://fqhmuqxpozwlin:fb9d151caa532cdd24dbd7fd9bcb2ef6215a2d499bfd5c7d48446b0e9b36a315@ec2-52-206-193-199.compute-1.amazonaws.com:5432/db63l3ukuv77j8
+	* Heroku CLI:heroku pg:psql postgresql-round-19031 --app gator-eats
+
+Server is live on localhost:8081
+
 #### Endpoints
 | endpoint                      | method | body                                           | description       |
 |-------------------------------|--------|------------------------------------------------|-------------------|
@@ -64,11 +78,8 @@
 | /api/restaurantbyzipcode      | GET    | {"owneremail", "name","zipcode"，"phone":}        | display List of Restaurant near a zip   |
 | /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone":} | Register New Restaurant             |
 | /api/addfoodmenuitem          | POST   | { ownerid String, price Float, name String }   | add food menu item                  |
-| /api/getfoodmenu              | POST   | { owneremail String }                            | get menu associated with a restaurant     |
-| /api/order                    | POST   | {"orderId":1,"ownerId":1,"totalPrice":1}       | Create order |
-| /api/order                    | PUT    | {"orderId":1,"ownerId":1,"totalPrice":1}       | Update order |
-| /api/order                    | DELETE | {"orderId":1,"ownerId":1}                      | Delete order |
-| /api/order                    | GET    |                                                | List orders  |
+| /api/getfoodmenu              | GET    | { owneremail String }                            | get menu associated with a restaurant     |
+
 
 
 2. Example of Endpoints uses
