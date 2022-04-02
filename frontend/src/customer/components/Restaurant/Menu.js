@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Menu.css";
 import axios from "axios";
-import AuthedNavBar from "../../NavBar/AuthedNavBar";
-import NavBar from "../../../components/NavBar/NavBar";
-import food from "../../../../img/food.png";
-import restaurant from "../../../../img/restaurant.png";
+import AuthedNavBar from "../NavBar/AuthedNavBar";
+import NavBar from "../../components/NavBar/NavBar";
+import food from "../../../img/food.png";
+import restaurant from "../../../img/restaurant.png";
 
 export default function RestaurantMenu() {
   const navigate = useNavigate();

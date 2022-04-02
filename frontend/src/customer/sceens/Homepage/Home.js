@@ -74,7 +74,7 @@ export default function Home() {
             onMouseEnter={() => setMouse("submit")}
             onMouseLeave={() => setMouse("")}
             onClick={() =>
-              address !== "" && navigate(`/restaurant_results/${address}`)
+              address !== "" && navigate(`/search/${address}`)
             }
           >
             <span>find my food</span>

@@ -20,7 +20,7 @@ export default function NavBar() {
         }
         onMouseEnter={() => setMouse("signup")}
         onMouseLeave={() => setMouse("")}
-        onClick={() => navigate("/signup")}
+        onClick={() => navigate("/user/signup")}
       >
         <span>Sign up</span>
       </div>
@@ -30,7 +30,7 @@ export default function NavBar() {
         }
         onMouseEnter={() => setMouse("signin")}
         onMouseLeave={() => setMouse("")}
-        onClick={() => navigate("/signin")}
+        onClick={() => navigate("/user/signin")}
       >
         <span>Sign in</span>
       </div>

@@ -60,7 +60,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i].restaurant}`)
+              navigate(`/restaurant/menu/${resData[i].restaurant}`)
             }
           >
             <img
@@ -77,7 +77,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 1].restaurant}`)
+              navigate(`/restaurant/${resData[i + 1].restaurant}`)
             }
           >
             <img
@@ -94,7 +94,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 2].restaurant}`)
+              navigate(`/restaurant/${resData[i + 2].restaurant}`)
             }
           >
             <img
@@ -111,7 +111,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 3].restaurant}`)
+              navigate(`/restaurant/${resData[i + 3].restaurant}`)
             }
           >
             <img

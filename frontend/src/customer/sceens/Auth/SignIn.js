@@ -40,7 +40,7 @@ export default function Signin() {
         console.log(res);
         window.localStorage.setItem("token", res.data.token);
         setErrorMsg("");
-        navigate("/home");
+        navigate("/user/home");
       })
       .catch((err) => {
         console.log(err);
