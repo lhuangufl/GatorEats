@@ -44,16 +44,15 @@ export default function MerchantSignUp() {
   };
   const handleSubmit = (e) => {
     axios
-      .post("http://127.0.0.1:5000/react/signup_restaurant", {
+      .post("http://127.0.0.1:8081/api/createrestaurant", {
         restaurantname: restaurant,
-        // firstname: firstname,
-        // lastname: lastname,
         zipcode: zipcode,
         email: email,
         password: password,
       })
       .then((res) => {
         console.log(res);
+        navigate("/merchant/signin");
       })
       .catch((err) => {
         console.log(err);

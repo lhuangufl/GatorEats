@@ -16,8 +16,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Restaurant from "./customer/sceens/Restaurant";
 import Cart from "./customer/sceens/Cart";
 import Payment from "./customer/sceens/Payment/Payment";
-import MerchantSignUp from "./merchant/components/Auth/Signup";
-import MerchantSignIn from "./merchant/components/Auth/Signin";
+import MerchantSignUp from "./merchant/sceens/Auth/Signup";
+import MerchantSignIn from "./merchant/sceens/Auth/Signin";
 
 ReactDOM.render(
   <React.StrictMode>

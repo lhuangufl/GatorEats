@@ -21,7 +21,7 @@ export default function MerchantSignIn() {
   useEffect(() => {
     setCount(count + 1);
     if (window.localStorage.getItem("token") !== null) {
-      navigate("/home");
+      navigate("/merchant/home");
     }
   }, [value]);
   const onChange = ({ target }) => setValue(target.value);
@@ -41,7 +41,7 @@ export default function MerchantSignIn() {
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("type", "restaurant");
         setErrorMsg("");
-        navigate("/home");
+        navigate("/merchant/home");
       })
       .catch((err) => {
         console.log(err);
