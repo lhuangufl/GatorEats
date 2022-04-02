@@ -6,7 +6,6 @@ import (
 	"goapp/packages/db"
 	"goapp/packages/utils"
 	"net/http"
-	"strconv"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -225,8 +224,7 @@ func AddMenu(c *fiber.Ctx, dbConn *sql.DB) error {
 func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
 	print("GET Request : Searching for restaurant\n")
 	zipCodeStr := c.Query("ZipCode")
-	zipCode, _ := strconv.ParseInt(zipCodeStr, 10, 64)
-	print(zipCode, zipCode-10, zipCode+10)
+	// zipCode, _ := strconv.ParseInt(zipCodeStr, 10, 64)
 	restaurants := []db.Restaurant{}
 	rows, err := dbConn.Query(db.GetAllRestaurantsQueryByZipCode, zipCodeStr)
 	if err != nil {
