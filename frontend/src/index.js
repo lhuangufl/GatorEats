@@ -12,7 +12,7 @@ import Home from "./customer/sceens/Homepage/Home";
 import Orders from "./customer/sceens/Orders";
 import Profile from "./customer/sceens/Profile/Profile";
 // import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Restaurant from "./customer/sceens/Restaurant";
 import Cart from "./customer/sceens/Cart";
 import Payment from "./customer/sceens/Payment/Payment";
@@ -45,11 +45,11 @@ ReactDOM.render(
 
         <Route
           path="/restaurant_results/:address"
-          element={<RestaurantResults/>}
+          element={<RestaurantResults />}
         ></Route>
         <Route
           path="/restaurant_menu/:restaurant"
-          element={<RestaurantMenu/>}
+          element={<RestaurantMenu />}
         ></Route>
         <Route
           path="/about"

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
-import NavBar from "../../components/NavBar/NavBar";
+import NavBar from "../../../customer/components/NavBar/NavBar";
 import google from "../../../img/google.png";
 
 export default function Signin() {
@@ -29,9 +29,9 @@ export default function Signin() {
   const handleSubmit = (e) => {
     axios
       // .post("http://127.0.0.1:5000/react/signin", {
-      .post("http://127.0.0.1:8081/api/login", {
-        email: email,
-        password: password,
+      .post("http://127.0.0.1:8081/api/vendorlogin", {
+        Owneremail: email,
+        Password: password,
       })
       .then((res) => {
         // const token = res.data;
@@ -39,9 +39,9 @@ export default function Signin() {
         // this.setState({loggedIn: true});
         console.log(res);
         window.localStorage.setItem("token", res.data.token);
-        window.localStorage.setItem("type", "customer");
+        window.localStorage.setItem("type", "restaurant");
         setErrorMsg("");
-        navigate("/user/home");
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);
@@ -61,33 +61,18 @@ export default function Signin() {
         }}
       ></div>
       <div className="signin">
-        <span className="signin-title">Sign in</span>
+        <span className="signin-title">Restaurant Sign in</span>
         <div className="signin-content">
-          <span>new to GatorEats?</span>
+          <span>Become our partner?</span>
           <div
             className={
               mouse === "signup" ? "signin-signup-onmouse" : "signin-signup"
             }
             onMouseEnter={() => setMouse("signup")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/signup_restaurant")}
           >
-            <span>Sign up</span>
-          </div>
-        </div>
-        <div className="signin-content">
-          <span>Partner?</span>
-          <div
-            className={
-              mouse === "signuprestaurant"
-                ? "signin-signup-onmouse"
-                : "signin-signup"
-            }
-            onMouseEnter={() => setMouse("signuprestaurant")}
-            onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signin_restaurant")}
-          >
-            <span>Sign in as restaurant</span>
+            <span>Join us</span>
           </div>
         </div>
         <span className="signin-error">{errorMsg}</span>

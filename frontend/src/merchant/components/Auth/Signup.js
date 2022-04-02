@@ -44,12 +44,12 @@ export default function Signuprestaurant() {
   };
   const handleSubmit = (e) => {
     axios
-      .post("http://127.0.0.1:5000/react/signup_restaurant", {
-        restaurantname: restaurant,
+      .post("http://127.0.0.1:8081/api/createrestaurant", {
+        owneremail: email,
         // firstname: firstname,
         // lastname: lastname,
         zipcode: zipcode,
-        email: email,
+        name: restaurant,
         password: password,
       })
       .then((res) => {
@@ -190,6 +190,7 @@ export default function Signuprestaurant() {
             <input
               className="signup-restaurant-input"
               onChange={checkPassword}
+              type="password"
             ></input>
           </div>
           {passwordError !== "" && (
@@ -215,6 +216,7 @@ export default function Signuprestaurant() {
             <input
               className="signup-restaurant-input"
               onChange={checkConfirmPassword}
+              type="password"
             ></input>
           </div>
           {confirmPasswordError !== "" && (
