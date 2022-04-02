@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./Menu.css";
 import axios from "axios";
-import MerchantNavBar from "../../components/NavBar/MerchantNavBar";
+import AuthedMerchantNavBar from "../../components/NavBar/AuthedMerchantNavBar";
 import food from "../../../img/food.png";
 import restaurant from "../../../img/restaurant.png";
 
@@ -150,7 +150,7 @@ export default function MerchantMenu(props) {
 
   return (
     <div>
-      <MerchantNavBar />
+      <AuthedMerchantNavBar />
       <div className="restaurant-menu">
         <div
           style={{

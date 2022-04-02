@@ -12,40 +12,37 @@ import {
 } from "react-bootstrap";
 
 export default function MerchantNavBar() {
+
   const thisWidth = window.innerWidth;
   const [mouse, setMouse] = useState("");
+  //   const [signin, setSignin] = useState(false);
   const navigate = useNavigate();
-  const [address, setAddress] = useState("");
-
   return (
-    <Navbar bg="transparent" expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="/merchant/home">
-          <span className="merchant-navbar-title">GatorEats</span>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse
-          className="nav navbar-nav navbar-right"
-          id="navbarScroll"
-        >
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <Nav.Link href="/merchant/menu">Menu</Nav.Link>
-            <Nav.Link href="/merchant/orders">Orders</Nav.Link>
-            <Nav.Link href="/merchant/profile">Profile</Nav.Link>
-            <Nav.Link href="/merchant/payment">Payment</Nav.Link>
-            <Nav.Link
-                href="/"
-                onClick={() => window.localStorage.removeItem("token")}
-              >
-                Logout
-              </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="merchant-navbar">
+      <div className="merchant-navbar-title" onClick={() => navigate("/")}>
+        <span>MerchantAdmin</span>
+      </div>
+      <div style={{ width: thisWidth * 0.6 }}></div>
+      <div
+        className={
+          mouse === "signup" ? "merchant-navbar-signup-onmouse" : "merchant-navbar-signup"
+        }
+        onMouseEnter={() => setMouse("signup")}
+        onMouseLeave={() => setMouse("")}
+        onClick={() => navigate("/user/signup")}
+      >
+        <span>Sign up</span>
+      </div>
+      <div
+        className={
+          mouse === "signin" ? "merchant-navbar-signin-onmouse" : "merchant-navbar-signin"
+        }
+        onMouseEnter={() => setMouse("signin")}
+        onMouseLeave={() => setMouse("")}
+        onClick={() => navigate("/user/signin")}
+      >
+        <span>Sign in</span>
+      </div>
+    </div>
   );
 }

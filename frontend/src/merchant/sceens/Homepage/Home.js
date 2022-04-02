@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MerchantNavBar from "../../components/NavBar/MerchantNavBar";
-import homeBackground from "./images/homeBackground.svg";
-import location from "./images/location.svg";
-import deliver from "./images/deliver.png";
-import restaurant from "./images/restaurant.png";
+import AuthedMerchantNavBar from "../../components/NavBar/AuthedMerchantNavBar";
 import "./Homepage.css";
 
 export default function MerchantHome() {
@@ -31,7 +27,7 @@ export default function MerchantHome() {
 
   return (
     <div className="home">
-        <MerchantNavBar />
+        <AuthedMerchantNavBar />
     </div>
   );
 }

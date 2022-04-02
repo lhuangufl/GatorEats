@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 import google from "../../../img/google.png";
-import NavBar from "../../../customer/components/NavBar/NavBar";
+import MerchantNavBar from "../../components/NavBar/MerchantNavBar";
 
 export default function MerchantSignUp() {
   const [typing, setTyping] = useState("");
@@ -62,7 +62,7 @@ export default function MerchantSignUp() {
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar />
+      <MerchantNavBar />
       <div
         style={{
           width: "100%",

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
-import NavBar from "../../../customer/components/NavBar/NavBar";
+import MerchantNavBar from "../../components/NavBar/MerchantNavBar";
 import google from "../../../img/google.png";
 
 export default function MerchantSignIn() {
@@ -53,7 +53,7 @@ export default function MerchantSignIn() {
 
   return (
     <div>
-      <NavBar />
+      <MerchantNavBar />
       <div
         style={{
           width: "100%",
