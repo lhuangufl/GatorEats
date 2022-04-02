@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./Menu.css";
 import axios from "axios";
 import AuthedNavBar from "../../NavBar/AuthedNavBar";
@@ -7,27 +7,38 @@ import NavBar from "../../../components/NavBar/NavBar";
 import food from "../../../../img/food.png";
 import restaurant from "../../../../img/restaurant.png";
 
-export default function RestaurantMenu() {
+export default function RestaurantMenu(props) {
   const navigate = useNavigate();
+  const params = useParams();
+  const { state } = useLocation();
+  console.log(state.email);
   const [mouse, setMouse] = useState("");
   const [data, setData] = useState([]);
 
   const [value, setValue] = useState("");
   const [count, setCount] = useState(-1);
-  useEffect(() => {
-    setCount(count + 1);
-    axios
-      .post("http://127.0.0.1:5000/react/menu", {
-        restaurant: params.restaurant,
-      })
-      .then((res) => {
-        const temp = res.data.data;
-        setData(temp);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [value]);
+  useEffect(
+    (props) => {
+      setCount(count + 1);
+      axios
+        .get(
+          `http://127.0.0.1:8081/api/getfoodmenu?OwnerEmail=${state.email}`,
+          {
+            OwnerEmail: params.email,
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          const temp = res.data;
+          setData(temp);
+        })
+        .catch((err) => {
+          console.log("error: " + state.email);
+          console.log(err);
+        });
+    },
+    [value]
+  );
   const onChange = ({ target }) => setValue(target.value);
 
   // const data = [
@@ -61,6 +72,7 @@ export default function RestaurantMenu() {
   //   },
   // ];
   var rows = [];
+  // if (data !== undefined) {
   for (let i = 0; i < data.length; i += 3) {
     rows.push(
       <div className="restaurant-menu-block">
@@ -140,8 +152,8 @@ export default function RestaurantMenu() {
       </div>
     );
   }
+  // }
 
-  const params = useParams();
   return (
     <div>
       {window.localStorage.getItem("token") === null ? (
