@@ -28,6 +28,7 @@ export default function MerchantHome() {
   return (
     <div className="home">
         <AuthedMerchantNavBar />
+        <span>Home [WIP]</span>
     </div>
   );
 }

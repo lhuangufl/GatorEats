@@ -20,6 +20,9 @@ import MerchantSignUp from "./merchant/sceens/Auth/Signup";
 import MerchantSignIn from "./merchant/sceens/Auth/Signin";
 import MerchantHome from "./merchant/sceens/Homepage/Home";
 import MerchantMenu from "./merchant/sceens/Menu/Menu";
+import MerchantPayment from "./merchant/sceens/Payment/Payment";
+import MerchantProfile from "./merchant/sceens/Profile/Profile";
+import MerchantOrders from "./merchant/sceens/Orders";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -41,9 +44,9 @@ ReactDOM.render(
         <Route path="/merchant/signin/" element={<MerchantSignIn/>}></Route>
         <Route path="/merchant/signup/" element={<MerchantSignUp/>}></Route>
         <Route path="/merchant/home/" element={<MerchantHome/>}></Route>
-        <Route path="/merchant/orders/" element={<MerchantSignUp/>}></Route>
-        <Route path="/merchant/profile/" element={<MerchantSignUp/>}></Route>
-        <Route path="/merchant/payment/" element={<MerchantSignUp/>}></Route>
+        <Route path="/merchant/orders/" element={<MerchantOrders/>}></Route>
+        <Route path="/merchant/profile/" element={<MerchantProfile/>}></Route>
+        <Route path="/merchant/payment/" element={<MerchantPayment/>}></Route>
         <Route path="/merchant/menu/" element={<MerchantMenu/>}></Route>
 
         <Route
