@@ -123,7 +123,7 @@ make docker-run
  order crud
 #### Endpoints
 
-/api/order	POST	{"orderId":1,"ownerId":1,"totalPrice":1}	Create order
-/api/order	PUT	{"orderId":1,"ownerId":1,"totalPrice":1}	Update order
-/api/order	DELETE	{"orderId":1,"ownerId":1}	Delete order
-/api/order	GET		List orders
+| /api/order                    | POST   | {"orderId":1,"ownerId":1,"totalPrice":1}       | Create order |
+| /api/order                    | PUT    | {"orderId":1,"ownerId":1,"totalPrice":1}       | Update order |
+| /api/order                    | DELETE | {"orderId":1,"ownerId":1}                      | Delete order |
+| /api/order                    | GET    |                                                | List orders  |
