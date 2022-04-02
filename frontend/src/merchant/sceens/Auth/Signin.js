@@ -40,6 +40,7 @@ export default function MerchantSignIn() {
         console.log(res);
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("type", "restaurant");
+        window.localStorage.setItem("email", email);
         setErrorMsg("");
         navigate("/merchant/home");
       })

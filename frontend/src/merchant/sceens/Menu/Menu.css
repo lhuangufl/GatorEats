@@ -1,0 +1,123 @@
+.restaurant-menu {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* background-color: blue; */
+}
+.restaurant-menu-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  /* background-color: blue; */
+  width: 90%;
+  height: 180px;
+  margin-bottom: 10px;
+}
+.restaurant-menu-icon {
+  border-radius: 80px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: rgb(0, 0, 0, 25%);
+  width: 150px;
+  margin-left: 35px;
+}
+.restaurant-menu-line {
+  width: 87%;
+  height: 1.5px;
+  background-color: rgb(0, 0, 0, 10%);
+  margin-bottom: 20px;
+}
+.restaurant-menu-title-content {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+
+.restaurant-menu-block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* background-color: blue; */
+  width: 1400px;
+  height: 250px;
+}
+.restaurant-menu-block-content {
+  margin-left: 50px;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(0, 0, 0, 10%);
+  width: 400px;
+  height: 230px;
+}
+.restaurant-menu-food-detail {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* background-color: rgb(0, 0, 0, 75%); */
+  width: 170px;
+  height: 230px;
+}
+.restaurant-menu-image {
+  width: 180px;
+  margin-left: 20px;
+}
+.restaurant-menu-name {
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(0, 0, 0, 75%);
+}
+.restaurant-menu-price {
+  margin-top: 10px;
+  margin-left: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(0, 0, 0, 75%);
+}
+.restaurant-menu-add-cart {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 10px; */
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  border-radius: 30px;
+  height: 40px;
+  width: 140px;
+  /* color: rgb(38, 159, 230); */
+}
+.restaurant-menu-add-cart-onmouse {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 10px; */
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(0, 0, 0, 75%);
+  border-radius: 30px;
+  height: 40px;
+  width: 140px;
+  /* color: rgb(38, 159, 230); */
+}
+.restaurant-menu-add-cart-content {
+  /* margin-top: 10px; */
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}

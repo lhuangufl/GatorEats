@@ -45,9 +45,9 @@ export default function MerchantSignUp() {
   const handleSubmit = (e) => {
     axios
       .post("http://127.0.0.1:8081/api/createrestaurant", {
-        restaurantname: restaurant,
+        name: restaurant,
         zipcode: zipcode,
-        email: email,
+        owneremail: email,
         password: password,
       })
       .then((res) => {

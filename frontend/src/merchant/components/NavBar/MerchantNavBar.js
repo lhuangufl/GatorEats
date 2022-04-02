@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./AuthedNavBar.css";
+import "./MerchantNavBar.css";
 import {
   Button,
   Container,
@@ -20,7 +20,7 @@ export default function MerchantNavBar() {
   return (
     <Navbar bg="transparent" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/user/home">
+        <Navbar.Brand href="/merchant/home">
           <span className="merchant-navbar-title">GatorEats</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -33,38 +33,17 @@ export default function MerchantNavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/restaurant">Restaurant</Nav.Link>
-            <Nav.Link href="/user/orders">Orders</Nav.Link>
-            <Nav.Link href="/user/cart">Shopping Cart</Nav.Link>
-            <NavDropdown title="Account" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/user/profile">Profile</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/user/payment">Payment</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item
+            <Nav.Link href="/merchant/menu">Menu</Nav.Link>
+            <Nav.Link href="/merchant/orders">Orders</Nav.Link>
+            <Nav.Link href="/merchant/profile">Profile</Nav.Link>
+            <Nav.Link href="/merchant/payment">Payment</Nav.Link>
+            <Nav.Link
                 href="/"
                 onClick={() => window.localStorage.removeItem("token")}
               >
                 Logout
-              </NavDropdown.Item>
-            </NavDropdown>
+              </Nav.Link>
           </Nav>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-              onChange={(e) => setAddress(e.target.value)}
-            />
-            <Button
-              variant="outline-success"
-              href={`/search/${address}`}
-              style={{ marginRight: 100 }}
-            >
-              Search
-            </Button>
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
