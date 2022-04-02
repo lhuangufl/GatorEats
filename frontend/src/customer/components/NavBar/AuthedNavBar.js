@@ -43,7 +43,10 @@ export default function AuthedNavBar() {
               <NavDropdown.Divider />
               <NavDropdown.Item
                 href="/"
-                onClick={() => window.localStorage.removeItem("token")}
+                onClick={() => {
+                  window.localStorage.removeItem("token");
+                  window.localStorage.removeItem("type");
+                }}
               >
                 Logout
               </NavDropdown.Item>
@@ -53,6 +56,7 @@ export default function AuthedNavBar() {
             <FormControl
               type="search"
               placeholder="Search"
+              id="search"
               className="me-2"
               aria-label="Search"
               onChange={(e) => setAddress(e.target.value)}

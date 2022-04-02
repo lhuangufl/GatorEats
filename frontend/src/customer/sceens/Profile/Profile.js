@@ -31,30 +31,35 @@ export default function Profile() {
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
+              id="email"
               placeholder="gator-eat-test@gmacil.com"
             />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="*********" />
+            <Form.Control
+              type="password"
+              placeholder="*********"
+              id="password"
+            />
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="formGridAddress1">
           <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
+          <Form.Control placeholder="1234 Main St" id="address" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGridAddress2">
           <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment 1234" />
+          <Form.Control placeholder="Apartment 1234" id="address2" />
         </Form.Group>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>City</Form.Label>
-            <Form.Control placeholder="Gainesville" />
+            <Form.Control placeholder="Gainesville" id="city" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
@@ -67,7 +72,7 @@ export default function Profile() {
 
           <Form.Group as={Col} controlId="formGridZip">
             <Form.Label>Zip</Form.Label>
-            <Form.Control placeholder="32603" />
+            <Form.Control placeholder="32603" id="zipcode" />
           </Form.Group>
         </Row>
 
