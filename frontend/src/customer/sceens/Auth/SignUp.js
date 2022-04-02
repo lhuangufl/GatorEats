@@ -97,7 +97,7 @@ export default function Signup() {
       <div className="signup">
         <span className="signup-title">Sign up</span>
         <div className="signup-content">
-          <span>already have account?</span>
+          <span>Already have account?</span>
           <div
             className={
               mouse === "signin" ? "signup-signin-onmouse" : "signup-signin"
@@ -107,6 +107,21 @@ export default function Signup() {
             onClick={() => navigate("/signin")}
           >
             <span>Sign in</span>
+          </div>
+        </div>
+        <div className="signup-content">
+          <span>Partner?</span>
+          <div
+            className={
+              mouse === "signuprestaurant"
+                ? "signin-signup-onmouse"
+                : "signin-signup"
+            }
+            onMouseEnter={() => setMouse("signuprestaurant")}
+            onMouseLeave={() => setMouse("")}
+            onClick={() => navigate("/merchant/signup/")}
+          >
+            <span>Sign up as restaurant</span>
           </div>
         </div>
         <div className="signup-names">

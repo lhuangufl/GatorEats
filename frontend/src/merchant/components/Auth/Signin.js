@@ -5,7 +5,7 @@ import axios from "axios";
 import NavBar from "../../../customer/components/NavBar/NavBar";
 import google from "../../../img/google.png";
 
-export default function Signin() {
+export default function MerchantSignIn() {
   const thisWidth = window.innerWidth;
   const thisHeight = window.innerHeight;
   const [typing, setTyping] = useState("");
@@ -70,7 +70,7 @@ export default function Signin() {
             }
             onMouseEnter={() => setMouse("signup")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signup_restaurant")}
+            onClick={() => navigate("/merchant/signup")}
           >
             <span>Join us</span>
           </div>

@@ -17,6 +17,7 @@ import Restaurant from "./customer/sceens/Restaurant";
 import Cart from "./customer/sceens/Cart";
 import Payment from "./customer/sceens/Payment/Payment";
 import MerchantSignUp from "./merchant/components/Auth/Signup";
+import MerchantSignIn from "./merchant/components/Auth/Signin";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -35,7 +36,7 @@ ReactDOM.render(
         <Route path="/restaurant/" element={<Restaurant/>}></Route>
         <Route path="/restaurant/:id" element={<RestaurantMenu/>}></Route>
         
-        <Route path="/merchant/signin/" element={<MerchantSignUp/>}></Route>
+        <Route path="/merchant/signin/" element={<MerchantSignIn/>}></Route>
         <Route path="/merchant/signup/" element={<MerchantSignUp/>}></Route>
         <Route path="/merchant/home/" element={<MerchantSignUp/>}></Route>
         <Route path="/merchant/orders/" element={<MerchantSignUp/>}></Route>
