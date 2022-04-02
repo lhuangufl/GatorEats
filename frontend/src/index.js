@@ -7,13 +7,14 @@ import Welcome from "./customer/sceens/Homepage/Welcome";
 import Signin from "./customer/sceens/Auth/SignIn";
 import Signup from "./customer/sceens/Auth/SignUp";
 import SignupRestaurant from "./merchant/components/Auth/Signup";
+import RestaurantSignin from "./merchant/components/Auth/Signin";
 import RestaurantResults from "./customer/sceens/SearchResult/SearchResult";
 import RestaurantMenu from "./customer/components/Restaurant/Menu/Menu";
 import Home from "./customer/sceens/Homepage/Home";
 import Orders from "./customer/sceens/Orders";
 import Profile from "./customer/sceens/Profile/Profile";
 // import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Restaurant from "./customer/sceens/Restaurant";
 import Cart from "./customer/sceens/Cart";
 import Payment from "./customer/sceens/Payment/Payment";
@@ -22,28 +23,26 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome/>}></Route>
-        <Route path="/app" element={<App/>}></Route>
-        <Route path="/signin" element={<Signin/>}></Route>
-        <Route path="/signup" element={<Signup/>}></Route>
-        <Route path="/home" element={<Home/>}></Route>
-        <Route path="/orders" element={<Orders/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
-        <Route path="/payment" element={<Payment/>}></Route>
-        <Route path="/cart" element={<Cart/>}></Route>
-        <Route
-          path="/restaurant/"
-          element={<Restaurant/>}
-        ></Route>
-        <Route path="/signup_restaurant" element={<SignupRestaurant/>}></Route>
+        <Route path="/" element={<Welcome />}></Route>
+        <Route path="/app" element={<App />}></Route>
+        <Route path="/signin" element={<Signin />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/orders" element={<Orders />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/payment" element={<Payment />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/restaurant/" element={<Restaurant />}></Route>
+        <Route path="/signup_restaurant" element={<SignupRestaurant />}></Route>
+        <Route path="/signin_restaurant" element={<RestaurantSignin />}></Route>
 
         <Route
           path="/restaurant_results/:address"
-          element={<RestaurantResults/>}
+          element={<RestaurantResults />}
         ></Route>
         <Route
           path="/restaurant_menu/:restaurant"
-          element={<RestaurantMenu/>}
+          element={<RestaurantMenu />}
         ></Route>
         <Route
           path="/about"
