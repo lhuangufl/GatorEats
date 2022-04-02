@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 import google from "../../../img/google.png";
-import NavBar from "../../../customer/components/NavBar/NavBar";
+import MerchantNavBar from "../../components/NavBar/MerchantNavBar";
 
 export default function MerchantSignUp() {
   const [typing, setTyping] = useState("");
@@ -45,9 +45,9 @@ export default function MerchantSignUp() {
   const handleSubmit = (e) => {
     axios
       .post("http://127.0.0.1:8081/api/createrestaurant", {
-        restaurantname: restaurant,
+        name: restaurant,
         zipcode: zipcode,
-        email: email,
+        owneremail: email,
         password: password,
       })
       .then((res) => {
@@ -62,7 +62,7 @@ export default function MerchantSignUp() {
   const navigate = useNavigate();
   return (
     <div>
-      <NavBar />
+      <MerchantNavBar />
       <div
         style={{
           width: "100%",

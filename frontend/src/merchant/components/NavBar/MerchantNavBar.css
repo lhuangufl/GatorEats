@@ -1,4 +1,4 @@
-.authed-navbar {
+.merchant-navbar {
   user-select: none;
   height: 70px;
   /* background-color: red; */
@@ -7,32 +7,33 @@
   justify-content: flex-start;
   flex-direction: row;
 }
-.authed-navbar-title {
+.merchant-navbar-title {
   margin-left: 70px;
   font-size: 30px;
   font-weight: bold;
   color: black;
   /* color: rgb(38, 159, 230); */
 }
-.authed-navbar-signup {
+.merchant-navbar-signup {
   margin-left: 30px;
   font-size: 24px;
   font-weight: bold;
   color: black;
   /* color: rgb(38, 159, 230); */
 }
-.authed-navbar-signup-onmouse {
+.merchant-navbar-signup-onmouse {
   margin-left: 30px;
   font-size: 24px;
   font-weight: bold;
   color: rgb(0, 0, 0, 75%);
   /* color: rgb(38, 159, 230); */
 }
-.authed-navbar-signin {
+.merchant-navbar-signin {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  margin-right: 30px;
   font-size: 24px;
   font-weight: bold;
   color: white;
@@ -42,11 +43,12 @@
   width: 110px;
   /* color: rgb(38, 159, 230); */
 }
-.authed-navbar-signin-onmouse {
+.merchant-navbar-signin-onmouse {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  margin-right: 30px;
   font-size: 24px;
   font-weight: bold;
   color: white;
