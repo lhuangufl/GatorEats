@@ -5,7 +5,7 @@ import axios from "axios";
 import NavBar from "../../../customer/components/NavBar/NavBar";
 import google from "../../../img/google.png";
 
-export default function Signin() {
+export default function MerchantSignIn() {
   const thisWidth = window.innerWidth;
   const thisHeight = window.innerHeight;
   const [typing, setTyping] = useState("");
@@ -21,7 +21,7 @@ export default function Signin() {
   useEffect(() => {
     setCount(count + 1);
     if (window.localStorage.getItem("token") !== null) {
-      navigate("/home");
+      navigate("/merchant/home");
     }
   }, [value]);
   const onChange = ({ target }) => setValue(target.value);
@@ -41,7 +41,7 @@ export default function Signin() {
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("type", "restaurant");
         setErrorMsg("");
-        navigate("/home");
+        navigate("/merchant/home");
       })
       .catch((err) => {
         console.log(err);
@@ -70,7 +70,7 @@ export default function Signin() {
             }
             onMouseEnter={() => setMouse("signup")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signup_restaurant")}
+            onClick={() => navigate("/merchant/signup")}
           >
             <span>Join us</span>
           </div>

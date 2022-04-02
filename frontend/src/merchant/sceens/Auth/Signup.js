@@ -5,7 +5,7 @@ import axios from "axios";
 import google from "../../../img/google.png";
 import NavBar from "../../../customer/components/NavBar/NavBar";
 
-export default function Signuprestaurant() {
+export default function MerchantSignUp() {
   const [typing, setTyping] = useState("");
   const [mouse, setMouse] = useState("");
 
@@ -45,15 +45,14 @@ export default function Signuprestaurant() {
   const handleSubmit = (e) => {
     axios
       .post("http://127.0.0.1:8081/api/createrestaurant", {
-        owneremail: email,
-        // firstname: firstname,
-        // lastname: lastname,
+        restaurantname: restaurant,
         zipcode: zipcode,
-        name: restaurant,
+        email: email,
         password: password,
       })
       .then((res) => {
         console.log(res);
+        navigate("/merchant/signin");
       })
       .catch((err) => {
         console.log(err);
@@ -76,7 +75,7 @@ export default function Signuprestaurant() {
           Sign up as a restaurant owner
         </span>
         <div className="signup-restaurant-content">
-          <span>already have account?</span>
+          <span>Already have account?</span>
           <div
             className={
               mouse === "signin"
@@ -85,7 +84,7 @@ export default function Signuprestaurant() {
             }
             onMouseEnter={() => setMouse("signin")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signin")}
+            onClick={() => navigate("/merchant/signin")}
           >
             <span>Sign in</span>
           </div>
@@ -190,7 +189,6 @@ export default function Signuprestaurant() {
             <input
               className="signup-restaurant-input"
               onChange={checkPassword}
-              type="password"
             ></input>
           </div>
           {passwordError !== "" && (
@@ -216,7 +214,6 @@ export default function Signuprestaurant() {
             <input
               className="signup-restaurant-input"
               onChange={checkConfirmPassword}
-              type="password"
             ></input>
           </div>
           {confirmPasswordError !== "" && (

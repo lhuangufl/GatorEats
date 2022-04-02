@@ -85,7 +85,7 @@ export default function Signin() {
             }
             onMouseEnter={() => setMouse("signuprestaurant")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signin_restaurant")}
+            onClick={() => navigate("/merchant/signin/")}
           >
             <span>Sign in as restaurant</span>
           </div>
