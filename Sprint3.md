@@ -11,6 +11,43 @@
 <img width="1440" alt="Screen Shot 2022-04-01 at 23 51 13" src="https://user-images.githubusercontent.com/60279540/161366144-d03576d4-53d3-4dce-987c-35402917b509.png">
 <img width="1440" alt="Screen Shot 2022-04-01 at 23 51 13" src="https://user-images.githubusercontent.com/60279540/161366150-0da95987-c7b9-4807-be0b-9ca0368ce397.png">
 
+#### Hongru Chu
+- Unify frontend router API
+  - user
+    - `/user/signin/`
+    - `/user/signup/`
+    - `/user/home/`
+    - `/user/orders/`
+    - `/user/profile/`
+    - `/user/payment/`
+    - `/user/cart/`
+  - merchant
+    - `/merchant/signin/`
+    - `/merchant/signup/`
+    - `/merchant/home/`
+    - `/merchant/orders/`
+    - `/merchant/profile/`
+    - `/merchant/payment/`
+    - `/merchant/cart/`
+  - general
+    - `/search/:address`
+    - `/restaurant/`
+    - `/restaurant/:id`
+- Setup merchant auth page and integrate with backend.
+- Add Merchant home page, order page.
+- Add payment, profile page.
+- Investigate payment page using Stripe UI kits.
+
+<img width="1173" alt="Screen Shot 2022-04-02 at 1 26 36 AM" src="https://user-images.githubusercontent.com/97488243/161367904-2148c8c0-b757-48ea-82a9-ae697dce087a.png">
+
+<img width="1130" alt="Screen Shot 2022-04-02 at 1 27 02 AM" src="https://user-images.githubusercontent.com/97488243/161367913-4a5c9194-aa58-4155-8b47-f3d8158e5ef1.png">
+
+<img width="1164" alt="Screen Shot 2022-04-02 at 1 27 15 AM" src="https://user-images.githubusercontent.com/97488243/161367924-6e530d38-2f8a-4b6f-9d15-b4fdeb91b9a4.png">
+
+<img width="1218" alt="Screen Shot 2022-04-02 at 1 27 45 AM" src="https://user-images.githubusercontent.com/97488243/161367944-8de28ae4-2af8-430f-af89-ea25c43e2436.png">
+
+<img width="1252" alt="Screen Shot 2022-04-02 at 1 28 39 AM" src="https://user-images.githubusercontent.com/97488243/161367967-40b49ce2-bcf5-41be-be6a-b1fd00544805.png">
+
 ## Backend
 #### Lin Huang
 - Implemented various endpoints as listed below
