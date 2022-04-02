@@ -22,7 +22,7 @@ export default function Welcome() {
     setCount(count + 1);
     setToken(window.localStorage.getItem("token"));
     if (window.localStorage.getItem("token") !== null) {
-      navigate("/home");
+      navigate("/user/home");
     }
   }, [value]);
   const onChange = ({ target }) => setValue(target.value);

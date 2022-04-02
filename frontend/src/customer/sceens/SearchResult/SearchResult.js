@@ -65,7 +65,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i].name}`, {
+              navigate(`/restaurant/${resData[i].name}`, {
                 state: { email: resData[i].owneremail },
               })
             }
@@ -82,7 +82,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 1].name}`, {
+              navigate(`/restaurant/${resData[i + 1].name}`, {
                 state: { email: resData[i + 1].owneremail },
               })
             }
@@ -101,7 +101,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 2].name}`, {
+              navigate(`/restaurant/${resData[i + 2].name}`, {
                 state: { email: resData[i + 2].owneremail },
               })
             }
@@ -120,7 +120,7 @@ export default function RestaurantResults() {
           <div
             className="restaurant-results-block-content"
             onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 3].name}`, {
+              navigate(`/restaurant/${resData[i + 3].name}`, {
                 state: { email: resData[i + 3].owneremail },
               })
             }

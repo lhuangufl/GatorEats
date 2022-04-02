@@ -23,7 +23,7 @@ export default function Signup() {
   useEffect(() => {
     setCount(count + 1);
     if (window.localStorage.getItem("token") !== null) {
-      navigate("/home");
+      navigate("/user/home");
     }
   }, [value]);
   const onChange = ({ target }) => setValue(target.value);

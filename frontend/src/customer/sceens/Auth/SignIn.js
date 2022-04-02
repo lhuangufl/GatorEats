@@ -41,7 +41,7 @@ export default function Signin() {
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("type", "customer");
         setErrorMsg("");
-        navigate("/home");
+        navigate("/user/home");
       })
       .catch((err) => {
         console.log(err);
