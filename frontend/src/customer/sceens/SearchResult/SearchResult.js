@@ -16,11 +16,12 @@ export default function RestaurantResults() {
   useEffect(() => {
     setCount(count + 1);
     axios
-      .post("http://127.0.0.1:5000/react/search_result", {
-        zipcode: params.address,
+      .get("http://127.0.0.1:8081/api/restaurantsbyzipcode", {
+        ZipCode: params.address,
       })
       .then((res) => {
-        const temp = res.data.data;
+        console.log(res.data);
+        const temp = res.data;
         setResData(temp);
       })
       .catch((err) => {
@@ -59,26 +60,20 @@ export default function RestaurantResults() {
         {i < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() =>
-              navigate(`/restaurant_menu/${resData[i].restaurant}`)
-            }
+            onClick={() => navigate(`/restaurant_menu/${resData[i].name}`)}
           >
             <img
               className="restaurant-results-image"
               src={restaurant}
               alt="restaurant"
             ></img>
-            <span className="restaurant-results-name">
-              {resData[i].restaurant}
-            </span>
+            <span className="restaurant-results-name">{resData[i].name}</span>
           </div>
         )}
         {i + 1 < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 1].restaurant}`)
-            }
+            onClick={() => navigate(`/restaurant_menu/${resData[i + 1].name}`)}
           >
             <img
               className="restaurant-results-image"
@@ -86,16 +81,14 @@ export default function RestaurantResults() {
               alt="restaurant"
             ></img>
             <span className="restaurant-results-name">
-              {resData[i + 1].restaurant}
+              {resData[i + 1].name}
             </span>
           </div>
         )}
         {i + 2 < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 2].restaurant}`)
-            }
+            onClick={() => navigate(`/restaurant_menu/${resData[i + 2].name}`)}
           >
             <img
               className="restaurant-results-image"
@@ -103,16 +96,14 @@ export default function RestaurantResults() {
               alt="restaurant"
             ></img>
             <span className="restaurant-results-name">
-              {resData[i + 2].restaurant}
+              {resData[i + 2].name}
             </span>
           </div>
         )}
         {i + 3 < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() =>
-              navigate(`/restaurant_menu/${resData[i + 3].restaurant}`)
-            }
+            onClick={() => navigate(`/restaurant_menu/${resData[i + 3].name}`)}
           >
             <img
               className="restaurant-results-image"
@@ -120,7 +111,7 @@ export default function RestaurantResults() {
               alt="restaurant"
             ></img>
             <span className="restaurant-results-name">
-              {resData[i + 3].restaurant}
+              {resData[i + 3].name}
             </span>
           </div>
         )}
