@@ -16,10 +16,14 @@ export default function RestaurantResults() {
   useEffect(() => {
     setCount(count + 1);
     axios
-      .get("http://127.0.0.1:8081/api/restaurantsbyzipcode", {
-        ZipCode: params.address,
-      })
+      .get(
+        `http://127.0.0.1:8081/api/restaurantsbyzipcode?ZipCode=${params.address}`,
+        {
+          ZipCode: params.address,
+        }
+      )
       .then((res) => {
+        console.log(params.address);
         console.log(res.data);
         const temp = res.data;
         setResData(temp);
@@ -60,7 +64,11 @@ export default function RestaurantResults() {
         {i < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() => navigate(`/restaurant_menu/${resData[i].name}`)}
+            onClick={() =>
+              navigate(`/restaurant_menu/${resData[i].name}`, {
+                state: { email: resData[i].owneremail },
+              })
+            }
           >
             <img
               className="restaurant-results-image"
@@ -73,7 +81,11 @@ export default function RestaurantResults() {
         {i + 1 < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() => navigate(`/restaurant_menu/${resData[i + 1].name}`)}
+            onClick={() =>
+              navigate(`/restaurant_menu/${resData[i + 1].name}`, {
+                state: { email: resData[i + 1].owneremail },
+              })
+            }
           >
             <img
               className="restaurant-results-image"
@@ -88,7 +100,11 @@ export default function RestaurantResults() {
         {i + 2 < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() => navigate(`/restaurant_menu/${resData[i + 2].name}`)}
+            onClick={() =>
+              navigate(`/restaurant_menu/${resData[i + 2].name}`, {
+                state: { email: resData[i + 2].owneremail },
+              })
+            }
           >
             <img
               className="restaurant-results-image"
@@ -103,7 +119,11 @@ export default function RestaurantResults() {
         {i + 3 < resData.length && (
           <div
             className="restaurant-results-block-content"
-            onClick={() => navigate(`/restaurant_menu/${resData[i + 3].name}`)}
+            onClick={() =>
+              navigate(`/restaurant_menu/${resData[i + 3].name}`, {
+                state: { email: resData[i + 3].owneremail },
+              })
+            }
           >
             <img
               className="restaurant-results-image"
