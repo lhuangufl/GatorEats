@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
-import NavBar from "../../../customer/components/NavBar/NavBar";
+import MerchantNavBar from "../../components/NavBar/MerchantNavBar";
 import google from "../../../img/google.png";
 
-export default function Signin() {
+export default function MerchantSignIn() {
   const thisWidth = window.innerWidth;
   const thisHeight = window.innerHeight;
   const [typing, setTyping] = useState("");
@@ -21,7 +21,7 @@ export default function Signin() {
   useEffect(() => {
     setCount(count + 1);
     if (window.localStorage.getItem("token") !== null) {
-      navigate("/home");
+      navigate("/merchant/home");
     }
   }, [value]);
   const onChange = ({ target }) => setValue(target.value);
@@ -40,8 +40,9 @@ export default function Signin() {
         console.log(res);
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("type", "restaurant");
+        window.localStorage.setItem("email", email);
         setErrorMsg("");
-        navigate("/home");
+        navigate("/merchant/home");
       })
       .catch((err) => {
         console.log(err);
@@ -52,7 +53,7 @@ export default function Signin() {
 
   return (
     <div>
-      <NavBar />
+      <MerchantNavBar />
       <div
         style={{
           width: "100%",
@@ -70,7 +71,7 @@ export default function Signin() {
             }
             onMouseEnter={() => setMouse("signup")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signup_restaurant")}
+            onClick={() => navigate("/merchant/signup")}
           >
             <span>Join us</span>
           </div>

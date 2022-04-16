@@ -20,7 +20,7 @@ export default function AuthedNavBar() {
   return (
     <Navbar bg="transparent" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/home">
+        <Navbar.Brand href="/user/home">
           <span className="authed-navbar-title">GatorEats</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -34,12 +34,12 @@ export default function AuthedNavBar() {
             navbarScroll
           >
             <Nav.Link href="/restaurant">Restaurant</Nav.Link>
-            <Nav.Link href="/orders">Orders</Nav.Link>
-            <Nav.Link href="/cart">Shopping Cart</Nav.Link>
+            <Nav.Link href="/user/orders">Orders</Nav.Link>
+            <Nav.Link href="/user/cart">Shopping Cart</Nav.Link>
             <NavDropdown title="Account" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="/user/profile">Profile</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/payment">Payment</NavDropdown.Item>
+              <NavDropdown.Item href="/user/payment">Payment</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item
                 href="/"
@@ -63,7 +63,7 @@ export default function AuthedNavBar() {
             />
             <Button
               variant="outline-success"
-              href={`/restaurant_results/${address}`}
+              href={`/search/${address}`}
               style={{ marginRight: 100 }}
             >
               Search

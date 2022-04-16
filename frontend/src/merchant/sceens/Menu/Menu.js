@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "./Menu.css";
 import axios from "axios";
-import AuthedNavBar from "../../NavBar/AuthedNavBar";
-import NavBar from "../../../components/NavBar/NavBar";
-import food from "../../../../img/food.png";
-import restaurant from "../../../../img/restaurant.png";
+import AuthedMerchantNavBar from "../../components/NavBar/AuthedMerchantNavBar";
+import food from "../../../img/food.png";
+import restaurant from "../../../img/restaurant.png";
 
-export default function RestaurantMenu(props) {
+export default function MerchantMenu(props) {
   const navigate = useNavigate();
   const params = useParams();
-  const { state } = useLocation();
-  console.log(state.email);
   const [mouse, setMouse] = useState("");
   const [data, setData] = useState([]);
 
@@ -22,10 +19,7 @@ export default function RestaurantMenu(props) {
       setCount(count + 1);
       axios
         .get(
-          `http://127.0.0.1:8081/api/getfoodmenu?OwnerEmail=${state.email}`,
-          {
-            OwnerEmail: params.email,
-          }
+          `http://127.0.0.1:8081/api/getfoodmenu?OwnerEmail=${localStorage.getItem('email')}`,
         )
         .then((res) => {
           console.log(res.data);
@@ -33,7 +27,7 @@ export default function RestaurantMenu(props) {
           setData(temp);
         })
         .catch((err) => {
-          console.log("error: " + state.email);
+          console.log("error: " + localStorage.getItem('email'));
           console.log(err);
         });
     },
@@ -156,11 +150,7 @@ export default function RestaurantMenu(props) {
 
   return (
     <div>
-      {window.localStorage.getItem("token") === null ? (
-        <NavBar />
-      ) : (
-        <AuthedNavBar />
-      )}
+      <AuthedMerchantNavBar />
       <div className="restaurant-menu">
         <div
           style={{

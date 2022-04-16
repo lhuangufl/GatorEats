@@ -41,7 +41,7 @@ export default function Signin() {
         window.localStorage.setItem("token", res.data.token);
         window.localStorage.setItem("type", "customer");
         setErrorMsg("");
-        navigate("/home");
+        navigate("/user/home");
       })
       .catch((err) => {
         console.log(err);
@@ -85,7 +85,7 @@ export default function Signin() {
             }
             onMouseEnter={() => setMouse("signuprestaurant")}
             onMouseLeave={() => setMouse("")}
-            onClick={() => navigate("/signin_restaurant")}
+            onClick={() => navigate("/merchant/signin/")}
           >
             <span>Sign in as restaurant</span>
           </div>

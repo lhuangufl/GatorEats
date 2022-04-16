@@ -1,0 +1,23 @@
+.authed-merchant-navbar {
+  user-select: none;
+  height: 70px;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.authed-merchant-navbar-title {
+  margin-left: 70px;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  /* color: rgb(38, 159, 230); */
+}
+.authed-merchant-navbar-text {
+  margin-left: 50px;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  /* color: rgb(38, 159, 230); */
+}

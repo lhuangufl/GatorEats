@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./MerchantNavBar.css";
+import {
+  Button,
+  Container,
+  Form,
+  FormControl,
+  Nav,
+  Navbar,
+  NavDropdown,
+} from "react-bootstrap";
 
-import "./NavBar.css";
+export default function MerchantNavBar() {
 
-export default function NavBar() {
   const thisWidth = window.innerWidth;
   const [mouse, setMouse] = useState("");
   //   const [signin, setSignin] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className="navbar">
-      <div className="navbar-title" onClick={() => navigate("/")}>
-        <span>GatorEats</span>
+    <div className="merchant-navbar">
+      <div className="merchant-navbar-title" onClick={() => navigate("/")}>
+        <span>MerchantAdmin</span>
       </div>
       <div style={{ width: thisWidth * 0.6 }}></div>
       <div
         className={
-          mouse === "signup" ? "navbar-signup-onmouse" : "navbar-signup"
+          mouse === "signup" ? "merchant-navbar-signup-onmouse" : "merchant-navbar-signup"
         }
         onMouseEnter={() => setMouse("signup")}
         onMouseLeave={() => setMouse("")}
@@ -26,7 +35,7 @@ export default function NavBar() {
       </div>
       <div
         className={
-          mouse === "signin" ? "navbar-signin-onmouse" : "navbar-signin"
+          mouse === "signin" ? "merchant-navbar-signin-onmouse" : "merchant-navbar-signin"
         }
         onMouseEnter={() => setMouse("signin")}
         onMouseLeave={() => setMouse("")}
