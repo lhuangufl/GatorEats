@@ -39,6 +39,7 @@ export default function Signin() {
         // this.setState({loggedIn: true});
         console.log(res);
         window.localStorage.setItem("token", res.data.token);
+        window.localStorage.setItem("email", email);
         window.localStorage.setItem("type", "customer");
         setErrorMsg("");
         navigate("/user/home");

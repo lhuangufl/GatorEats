@@ -46,6 +46,7 @@ export default function AuthedNavBar() {
                 onClick={() => {
                   window.localStorage.removeItem("token");
                   window.localStorage.removeItem("type");
+                  window.localStorage.removeItem("email");
                 }}
               >
                 Logout
