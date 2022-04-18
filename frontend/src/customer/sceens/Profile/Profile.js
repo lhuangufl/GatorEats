@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthedNavBar from "../../components/NavBar/AuthedNavBar";
 import { Button, Col, Form, Nav, Row } from "react-bootstrap";
 import "./Profiel.css";
+import axios from "axios";
 
 export default function Profile() {
   const navigate = useNavigate();
   const [mouse, setMouse] = useState("");
+  const [count, setCount] = useState(-1);
+  const [value, setValue] = useState("");
+  const [resData, setResData] = useState();
 
+  useEffect(() => {
+    setCount(count + 1);
+    axios
+      .get(
+        `http://127.0.0.1:8081/api/getuserprofile?email=${window.localStorage.getItem(
+          "email"
+        )}`,
+        { email: window.localStorage.getItem("email") }
+      )
+      .then((res) => {
+        // console.log(params.address);
+        console.log(res.data);
+        const temp = res.data;
+        setResData(temp);
+      })
+      .catch((err) => {
+        console.log(window.localStorage.getItem("email"));
+        console.log(err);
+      });
+  }, [value]);
+  const onChange = ({ target }) => setValue(target.value);
   return (
     <div>
       <AuthedNavBar />
@@ -36,14 +61,14 @@ export default function Profile() {
             />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridPassword">
+          {/* <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="*********"
               id="password"
             />
-          </Form.Group>
+          </Form.Group> */}
         </Row>
 
         <Form.Group className="mb-3" controlId="formGridAddress1">
