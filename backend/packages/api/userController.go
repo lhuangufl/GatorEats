@@ -173,11 +173,11 @@ func LoginAsRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
 func Home(c *fiber.Ctx, dbConn *sql.DB) error {
 	restaurants := []db.Restaurant{}
 	rows, err := dbConn.Query(db.GetAllRestaurantsQuery)
-	defer rows.Close()
 	if err != nil {
 		return c.Status(http.StatusUnauthorized).
 			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
 	}
+	defer rows.Close()
 	for rows.Next() {
 		var restaurant db.Restaurant
 		err = rows.Scan(&restaurant.ID, &restaurant.Name, &restaurant.Owneremail, &restaurant.Zipcode,
@@ -232,10 +232,9 @@ func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
 			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
 	}
 	defer rows.Close()
-	print(rows)
 	for rows.Next() {
 		var restaurant db.Restaurant
-		err = rows.Scan(&restaurant.Owneremail, &restaurant.Name, &restaurant.Zipcode, &restaurant.Phone)
+		err = rows.Scan(&restaurant.Owneremail, &restaurant.Name, &restaurant.Phone, &restaurant.Zipcode)
 		if err != nil {
 			return c.Status(http.StatusUnauthorized).
 				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
@@ -243,6 +242,81 @@ func RestaurantByZipCode(c *fiber.Ctx, dbConn *sql.DB) error {
 		restaurants = append(restaurants, restaurant)
 	}
 	return c.Status(http.StatusOK).JSON(restaurants)
+}
+
+func GetRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
+	print("GET Request : Searching for restaurant\n")
+	emailStr := c.Query("email")
+	print(emailStr)
+	rows, err := dbConn.Query(db.GetRestaurantByEmailQuery, emailStr)
+	print(rows)
+	if err != nil {
+		return c.Status(http.StatusUnauthorized).
+			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
+	}
+
+	var r db.Restaurant
+	for rows.Next() {
+		err = rows.Scan(&r.ID, &r.Owneremail, &r.Password, &r.Name, &r.Zipcode, &r.Phone, &r.CreatedAt, &r.UpdatedAt)
+		if err != nil {
+			print(err.Error())
+			return c.Status(http.StatusUnauthorized).
+				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
+		}
+	}
+	return c.Status(http.StatusOK).JSON(r)
+}
+
+func GetUserProfile(c *fiber.Ctx, dbConn *sql.DB) error {
+	print("GET Request : Searching for restaurant\n")
+	emailStr := c.Query("email")
+	print(emailStr)
+	rows, err := dbConn.Query(db.GetUserByEmailQuery, emailStr)
+	print(rows)
+	if err != nil {
+		return c.Status(http.StatusUnauthorized).
+			JSON(fiber.Map{"success": false, "errors": []string{"Our homepage is down, please try again later"}})
+	}
+
+	var u db.User
+	for rows.Next() {
+		err = rows.Scan(&u.ID, &u.Name, &u.Password, &u.Email, &u.CreatedAt, &u.UpdatedAt)
+		if err != nil {
+			print(err.Error())
+			return c.Status(http.StatusUnauthorized).
+				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
+		}
+	}
+	return c.Status(http.StatusOK).JSON(u)
+}
+
+func UpdateUserProfile(c *fiber.Ctx, dbConn *sql.DB) error {
+	user := new(db.User)
+
+	if err := c.BodyParser(user); err != nil {
+		return err
+	}
+
+	_, err := dbConn.Query(db.UpdateUserProfile, user.Name, user.Email, user.ID)
+	if err != nil {
+		return err
+	}
+	return c.JSON(&fiber.Map{"success": true})
+}
+
+func UpdateVendorProfile(c *fiber.Ctx, dbConn *sql.DB) error {
+	println("Updating vendor profile")
+	r := new(db.Restaurant)
+
+	if err := c.BodyParser(r); err != nil {
+		return err
+	}
+
+	_, err := dbConn.Query(db.UpdateVendorProfile, r.Owneremail, r.Name, r.Zipcode, r.Phone, r.ID)
+	if err != nil {
+		return err
+	}
+	return c.JSON(&fiber.Map{"success": true})
 }
 
 func MenuByOwnerID(c *fiber.Ctx, dbConn *sql.DB) error {
@@ -261,6 +335,7 @@ func MenuByOwnerID(c *fiber.Ctx, dbConn *sql.DB) error {
 		var menuitem db.FoodMenu
 		err = rows.Scan(&menuitem.FID, &menuitem.RID, &menuitem.Name, &menuitem.Price, &menuitem.CreatedAt, &menuitem.UpdatedAt)
 		if err != nil {
+			print(err.Error())
 			return c.Status(http.StatusUnauthorized).
 				JSON(fiber.Map{"success": false, "errors": []string{"Data is corrupted"}})
 		}
