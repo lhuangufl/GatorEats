@@ -51,6 +51,7 @@ func httpServer(db *sql.DB) *fiber.App {
 	api.Put("/order", WithDB(UpdateOrder, db))
 	api.Delete("/order", WithDB(DeleteOrder, db))
 	api.Get("/order", WithDB(ListOrder, db))
+	api.Post("/checkout", WithDB(Checkout, db))
 
 	// authed routes
 	api.Get("/session", AuthorizeSession, WithDB(Session, db))
