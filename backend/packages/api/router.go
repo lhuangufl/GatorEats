@@ -42,8 +42,10 @@ func httpServer(db *sql.DB) *fiber.App {
 	api.Post("/createrestaurant", WithDB(CreateRestaurant, db))
 	api.Post("/addfoodmenuitem", WithDB(AddMenu, db))
 	api.Get("/getfoodmenu", WithDB(MenuByOwnerID, db))
-	api.Get("/getvendor", WithDB(GetRestaurant, db))
 	api.Get("/getuserprofile", WithDB(GetUserProfile, db))
+	api.Get("/getvendor", WithDB(GetRestaurant, db))
+	api.Put("/updateuserprofile", WithDB(UpdateUserProfile, db))
+	api.Put("/updatevendor", WithDB(UpdateVendorProfile, db))
 
 	api.Post("/order", WithDB(CreateOrder, db))
 	api.Put("/order", WithDB(UpdateOrder, db))

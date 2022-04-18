@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS restaurants
 (
     restID serial PRIMARY KEY,
-	ownerID serial NOT NULL,
+	owneremail text NOT NULL,
 	password text NOT NULL,
     name text NOT NULL,
     zipcode text NOT NULL,
@@ -82,10 +82,12 @@ CREATE TABLE IF NOT EXISTS gatorOrder
 | /api/vendorlogin              | POST   | { email String, password String }              | login restaurant                    |
 | /api/register                 | POST   | { email String, password String, name String } | register new user                   |
 | /api/restaurantbyzipcode      | GET    | {"owneremail", "name","zipcode"，"phone":}        | display List of Restaurant near a zip   |
-| /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone":} | Register New Restaurant       |
+| /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone"} | Register New Restaurant       |
 | /api/addfoodmenuitem          | POST   | { ownerid String, price Float, name String }   | add food menu item                  |
 | /api/getvendor                | GET    | { email String }                               | get a restaurant information        |
 | /api/getuserprofile            | GET    | { email String }                               | get a user's profile information     |
+| /api/updatevendor             | PUT    | {"owneremail","name","zipcode"，"phone","id"}   | update a restaurant profile        |
+| /api/updateuserprofile         | PUT    | { name: String, email: String, id: String }    | update a user's profile   |
 | /api/getfoodmenu              | GET    | { owneremail String }                          | get menu associated with a restaurant     |
 | /api/order                    | POST   | {"orderId":1,"ownerId":1,"totalPrice":1}       | Create order |
 | /api/order                    | PUT    | {"orderId":1,"ownerId":1,"totalPrice":1}       | Update order |
