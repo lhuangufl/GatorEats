@@ -6,6 +6,7 @@ import (
 	"goapp/packages/db"
 	"goapp/packages/utils"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -120,13 +121,14 @@ func Login(c *fiber.Ctx, dbConn *sql.DB) error {
 }
 
 func LoginAsRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
-	print("LoginAsRestaurant \n")
+	// print("LoginAsRestaurant \n")
 	loginUser := &db.Restaurant{}
 
 	if err := c.BodyParser(loginUser); err != nil {
 		return err
 	}
-
+	// println(loginUser.Owneremail)
+	// println(loginUser.Password)
 	restaurant := &db.Restaurant{}
 	if err := dbConn.QueryRow(db.GetRestaurantByEmailQuery, loginUser.Owneremail).
 		Scan(&restaurant.Password); err != nil {
@@ -136,7 +138,7 @@ func LoginAsRestaurant(c *fiber.Ctx, dbConn *sql.DB) error {
 	}
 	// print(restaurant.Password, loginUser.Password)
 	// match := utils.ComparePassword(restaurant.Password, loginUser.Password)
-	if loginUser.Password != restaurant.Password {
+	if strings.Compare(loginUser.Password, restaurant.Password) == 0 {
 		return c.Status(http.StatusUnauthorized).JSON(fiber.Map{"success": false, "errors": []string{"Incorrect credentials"}})
 	}
 
