@@ -25,8 +25,8 @@ import MerchantMenu from "./merchant/sceens/Menu/Menu";
 import MerchantPayment from "./merchant/sceens/Payment/Payment";
 import MerchantProfile from "./merchant/sceens/Profile/Profile";
 import MerchantOrders from "./merchant/sceens/Orders";
-import Checkout from "./customer/sceens/CheckoutForm";
-import Pay from './customer/sceens/Pay'
+import Checkout from "./customer/sceens/Checkout/CheckoutForm";
+import Pay from './customer/sceens/Checkout/Pay'
 import ApplePay from "./customer/components/Checkout/ApplePay";
 import CardForm from "./customer/components/Checkout/Card";
 import GooglePay from "./customer/components/Checkout/GooglePay";
@@ -96,30 +96,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Elements stripe={loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx')}>
-//       <BrowserRouter>
-//         <Routes>
-//           <Route path="/user/checkout/" element={<Checkout/>}></Route>
-//           <Route path="/user/checkout/card" element={<CardForm/>}></Route>
-//           <Route path="/user/checkout/apple_pay" element={<ApplePay/>}></Route>
-//           <Route path="/user/checkout/google_pay" element={<GooglePay/>}></Route>
-//           <Route path="/user/checkout/wechat_pay" element={<WeChatPay/>}></Route>
-//           <Route path="/user/checkout/sept_debit" element={<SepaDebitForm/>}></Route>
-//         </Routes>
-//       </BrowserRouter>
-//     </Elements>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-// // // If you want to start measuring performance in your app, pass a function
-// // // to log results (for example: reportWebVitals(console.log))
-// // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// // // reportWebVitals();
-// // document.addEventListener('DOMContentLoaded', async () => {
-// //   const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-
-  
-// // });
