@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 import "./index.css";
 import App from "./App";
 import Welcome from "./customer/sceens/Homepage/Welcome";
@@ -23,6 +25,9 @@ import MerchantMenu from "./merchant/sceens/Menu/Menu";
 import MerchantPayment from "./merchant/sceens/Payment/Payment";
 import MerchantProfile from "./merchant/sceens/Profile/Profile";
 import MerchantOrders from "./merchant/sceens/Orders";
+import Checkout from "./customer/sceens/Checkout";
+import Card from "./customer/components/Checkout/Card"
+import ApplePay from "./customer/components/Checkout/ApplePay";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -36,6 +41,8 @@ ReactDOM.render(
         <Route path="/user/profile/" element={<Profile/>}></Route>
         <Route path="/user/payment/" element={<Payment/>}></Route>
         <Route path="/user/cart/" element={<Cart/>}></Route>
+        <Route path="/user/checkout/" element={<Checkout/>}></Route>
+        <Route path="/card" element={<Card/>} />
 
         <Route path="/search/:address" element={<RestaurantResults/>}></Route>
         <Route path="/restaurant/" element={<Restaurant/>}></Route>
@@ -83,3 +90,21 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
+document.addEventListener('DOMContentLoaded', async () => {
+  const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+  ReactDOM.render(
+    <React.StrictMode>
+      <Elements stripe={stripePromise}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/user/checkout/" element={<Checkout/>}></Route>
+            <Route path="/user/checkout/card" element={<Card/>}></Route>
+            <Route path="/user/checkout/apple_pay" element={<ApplePay/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </Elements>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+});
