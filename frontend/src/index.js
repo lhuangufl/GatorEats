@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 import "./index.css";
 import App from "./App";
 import Welcome from "./customer/sceens/Homepage/Welcome";
@@ -23,6 +25,13 @@ import MerchantMenu from "./merchant/sceens/Menu/Menu";
 import MerchantPayment from "./merchant/sceens/Payment/Payment";
 import MerchantProfile from "./merchant/sceens/Profile/Profile";
 import MerchantOrders from "./merchant/sceens/Orders";
+import Checkout from "./customer/sceens/CheckoutForm";
+import Pay from './customer/sceens/Pay'
+import ApplePay from "./customer/components/Checkout/ApplePay";
+import CardForm from "./customer/components/Checkout/Card";
+import GooglePay from "./customer/components/Checkout/GooglePay";
+import WeChatPay from "./customer/components/Checkout/WechatPay";
+import SepaDebitForm from "./customer/components/Checkout/SeptDebit";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -36,6 +45,15 @@ ReactDOM.render(
         <Route path="/user/profile/" element={<Profile/>}></Route>
         <Route path="/user/payment/" element={<Payment/>}></Route>
         <Route path="/user/cart/" element={<Cart/>}></Route>
+        <Route path="/user/checkout/" element={<Checkout/>}></Route>
+        <Route path="/user/checkout/card" element={<CardForm/>}></Route>
+        <Route path="/user/checkout/" element={<Checkout/>}></Route>
+        <Route path="/user/checkout/pay" element={<Pay stripePromise={loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx')} />} />
+        <Route path="/user/checkout/card" element={<CardForm/>}></Route>
+        <Route path="/user/checkout/apple_pay" element={<ApplePay/>}></Route>
+        <Route path="/user/checkout/google_pay" element={<GooglePay/>}></Route>
+        <Route path="/user/checkout/wechat_pay" element={<WeChatPay/>}></Route>
+        <Route path="/user/checkout/sept_debit" element={<SepaDebitForm/>}></Route>
 
         <Route path="/search/:address" element={<RestaurantResults/>}></Route>
         <Route path="/restaurant/" element={<Restaurant/>}></Route>
@@ -79,7 +97,29 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Elements stripe={loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx')}>
+//       <BrowserRouter>
+//         <Routes>
+//           <Route path="/user/checkout/" element={<Checkout/>}></Route>
+//           <Route path="/user/checkout/card" element={<CardForm/>}></Route>
+//           <Route path="/user/checkout/apple_pay" element={<ApplePay/>}></Route>
+//           <Route path="/user/checkout/google_pay" element={<GooglePay/>}></Route>
+//           <Route path="/user/checkout/wechat_pay" element={<WeChatPay/>}></Route>
+//           <Route path="/user/checkout/sept_debit" element={<SepaDebitForm/>}></Route>
+//         </Routes>
+//       </BrowserRouter>
+//     </Elements>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+// // // If you want to start measuring performance in your app, pass a function
+// // // to log results (for example: reportWebVitals(console.log))
+// // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// // // reportWebVitals();
+// // document.addEventListener('DOMContentLoaded', async () => {
+// //   const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+  
+// // });
