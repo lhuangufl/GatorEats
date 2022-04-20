@@ -32,6 +32,7 @@ import CardForm from "./customer/components/Checkout/Card";
 import GooglePay from "./customer/components/Checkout/GooglePay";
 import WeChatPay from "./customer/components/Checkout/WechatPay";
 import SepaDebitForm from "./customer/components/Checkout/SeptDebit";
+import Alipay from "./customer/components/Checkout/Alipay";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -53,6 +54,7 @@ ReactDOM.render(
         <Route path="/user/checkout/apple_pay" element={<ApplePay/>}></Route>
         <Route path="/user/checkout/google_pay" element={<GooglePay/>}></Route>
         <Route path="/user/checkout/wechat_pay" element={<WeChatPay/>}></Route>
+        <Route path="/user/checkout/ali_pay" element={<Alipay/>}></Route>
         <Route path="/user/checkout/sept_debit" element={<SepaDebitForm/>}></Route>
 
         <Route path="/search/:address" element={<RestaurantResults/>}></Route>
