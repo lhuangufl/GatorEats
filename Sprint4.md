@@ -8,3 +8,16 @@
 <img width="1440" alt="Screen Shot 2022-04-20 at 23 02 21" src="https://user-images.githubusercontent.com/60279540/164363324-c29c4755-eae9-438c-94d3-50a28944799d.png">
 
 - cypress test cases for frontend.
+
+
+## Backend
+#### Guanglong Zhang
+- stripe payment and unit test
+#### Endpoints
+| endpoint                      | method | body                                           | description       |
+|-------------------------------|--------|------------------------------------------------|-------------------|
+| /api/order                    | POST   | {"orderId":1,"ownerId":1,"totalPrice":1}       | Create order |
+| /api/order                    | PUT    | {"orderId":1,"ownerId":1,"totalPrice":1}       | Update order |
+| /api/order                    | DELETE | {"orderId":1,"ownerId":1}                      | Delete order |
+| /api/order                    | GET    |                                                | List orders  |
+| /api/checkout	                | POST	 |                                                |   checkout   |
