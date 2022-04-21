@@ -12,7 +12,9 @@
 
 ## Backend
 #### Guanglong Zhang
-- stripe payment and unit test
+- stripe payment 
+- List and Delete order 
+- Unit test
 #### Endpoints
 | endpoint                      | method | body                                           | description       |
 |-------------------------------|--------|------------------------------------------------|-------------------|
