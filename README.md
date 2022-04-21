@@ -22,6 +22,15 @@ and the user can edit his/her profile by changing the information in the input b
 
 When signed in as a restaurant, the user could not search or order foods, but it can manage the menu and order from users insteadly.
 
+## Project Delivery Tracking and Summary
+- Delivery
+  - [Sprint 1](https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/Sprint1.md)
+  - [Sprint 2](https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/Sprint2.md)
+  - [Sprint 3](https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/Sprint3.md)
+  - [Sprint 4](https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/Sprint4.md)
+- [API Dcoumentation](https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/api-doc.md)
+- [Project Board](https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/projects)
+
 ## Demo Video
 https://user-images.githubusercontent.com/60279540/164373166-8e235deb-c408-44d7-aa97-d81b0983f882.mp4
 
@@ -30,12 +39,3 @@ https://user-images.githubusercontent.com/60279540/164373563-1889a7a8-0034-4ffc-
 
 ## Backend Unit Test Video
 - ---------to be uploaded-----------
-
-## Link to API Documentation
-https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/api-doc.md
-
-## Link to Project Board
-https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/projects?type=beta
-
-## Link to Sprint4 deliverables
-https://github.com/lhuangufl/GatorEats-CEN5035-Spring22/blob/master/Sprint4.md
