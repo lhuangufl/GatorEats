@@ -10,7 +10,6 @@ export default function Profile() {
   const [mouse, setMouse] = useState("");
   const [count, setCount] = useState(-1);
   const [value, setValue] = useState("");
-  const [resData, setResData] = useState();
 
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");

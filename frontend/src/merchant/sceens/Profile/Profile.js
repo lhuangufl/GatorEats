@@ -1,12 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthedMerchantNavBar from "../../components/NavBar/AuthedMerchantNavBar";
 import { Button, Col, Form, Nav, Row } from "react-bootstrap";
 import "./Profile.css";
+import axios from "axios";
 
 export default function MerchantProfile() {
   const navigate = useNavigate();
   const [mouse, setMouse] = useState("");
+
+  const [count, setCount] = useState(-1);
+  const [value, setValue] = useState("");
+
+  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [zipcode, setZipcode] = useState("");
+
+  useEffect(() => {
+    setCount(count + 1);
+    axios
+      .get(
+        `http://127.0.0.1:8081/api/getvendor?email=${window.localStorage.getItem(
+          "email"
+        )}`,
+        { email: window.localStorage.getItem("email") }
+      )
+      .then((res) => {
+        console.log(window.localStorage.getItem("email"));
+        console.log(res.data);
+        // console.log(params.address);
+        setEmail(res.data.owneremail);
+        setName(res.data.name);
+        setId(res.data.id);
+        setZipcode(res.data.zipcode);
+      })
+      .catch((err) => {
+        console.log(window.localStorage.getItem("email"));
+        console.log(err);
+      });
+  }, [value]);
+  const onChange = ({ target }) => setValue(target.value);
+
+  const handleSubmit = (e) => {
+    axios
+      // .post("http://127.0.0.1:5000/react/signin", {
+      .put("http://127.0.0.1:8081/api/updatevendor", {
+        email: email,
+        name: name,
+        zipcode: zipcode,
+        id: id,
+        phone: "",
+      })
+      .then((res) => {
+        console.log("+++ " + res.data);
+        localStorage.removeItem("email");
+        localStorage.setItem("email", email);
+        console.log("++++  " + window.localStorage.getItem("email"));
+        // navigate("/user/profile");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    localStorage.removeItem("email");
+    localStorage.setItem("email", email);
+    // TODO: Add auth
+  };
 
   return (
     <div>
@@ -26,38 +85,36 @@ export default function MerchantProfile() {
         </Nav>
       </div> */}
       <Form className="profile-container">
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="gator-eat-test@gmacil.com"
-            />
-          </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="*********" />
-          </Form.Group>
-        </Row>
+        <Form.Group className="mb-3">
+          <Form.Label>Restaurant name</Form.Label>
+          <Form.Control
+            value={name}
+            id="name"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formGridAddress1">
+        <Form.Group className="mb-3">
           <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment 1234" />
+          <Form.Control placeholder="1234 Main St" id="address" />
         </Form.Group>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
+          <Form.Group as={Col}>
             <Form.Label>City</Form.Label>
-            <Form.Control placeholder="Gainesville" />
+            <Form.Control placeholder="Gainesville" id="city" />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridState">
+          <Form.Group as={Col}>
             <Form.Label>State</Form.Label>
             <Form.Select defaultValue="Choose...">
               <option>FL</option>
@@ -65,13 +122,17 @@ export default function MerchantProfile() {
             </Form.Select>
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridZip">
+          <Form.Group as={Col}>
             <Form.Label>Zip</Form.Label>
-            <Form.Control placeholder="32603" />
+            <Form.Control
+              id="zipcode"
+              value={zipcode}
+              onChange={(e) => setZipcode(e.target.value)}
+            />
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={handleSubmit}>
           Save
         </Button>
       </Form>
