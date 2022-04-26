@@ -55,3 +55,21 @@
 | /api/order                    | DELETE | {"orderId":1,"ownerId":1}                      | Delete order |
 | /api/order                    | GET    |                                                | List orders  |
 | /api/checkout	                | POST	 |                                                |   checkout   |
+
+#### Lin Huang
+## Endpoints
+| endpoint                      | method | body                                           | description       |
+|-------------------------------|--------|------------------------------------------------|-------------------|
+| /api/session                  | GET    |                                                | GET user session                    |
+| /api/logout                   | GET    |                                                | GET user logout                     |
+| /api/login                    | POST   | { email String, password String }              | login user                          |
+| /api/vendorlogin              | POST   | { email String, password String }              | login restaurant                    |
+| /api/register                 | POST   | { email String, password String, name String } | register new user                   |
+| /api/restaurantbyzipcode      | GET    | {"owneremail", "name","zipcode"，"phone":}        | display List of Restaurant near a zip   |
+| /api/createrestaurant         | POST   | {"owneremail","password"，"name","zipcode"，"phone"} | Register New Restaurant       |
+| /api/addfoodmenuitem          | POST   | { ownerid String, price Float, name String }   | add food menu item                  |
+| /api/getvendor                | GET    | { email String }                               | get a restaurant information        |
+| /api/getuserprofile            | GET    | { email String }                               | get a user's profile information     |
+| /api/updatevendor             | PUT    | {"owneremail","name","zipcode"，"phone","id"}   | update a restaurant profile        |
+| /api/updateuserprofile         | PUT    | { name: String, email: String, id: String }    | update a user's profile   |
+| /api/getfoodmenu              | GET    | { owneremail String }                          | get menu associated with a restaurant     |
